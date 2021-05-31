@@ -1,0 +1,12 @@
+
+
+
+
+
+# this 2 folder will be ignore as it's too big
+vendor
+
+node_modules
+
+
+.env
