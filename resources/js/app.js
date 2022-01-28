@@ -1,32 +1,36 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 
-require('./bootstrap');
+import {createApp} from 'vue'
 
-window.Vue = require('vue').default;
+import App from './App.vue'
+import axios from 'axios'
+import router from './router'
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+import "bulma/bulma.sass"
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// font awesome 28 Jan 2022
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas)
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+// jodit 
+// copy code from https://libraries.io/npm/jodit-vue3
+import 'jodit/build/jodit.min.css'
+import JoditEditor from 'jodit-vue3'
 
-const app = new Vue({
-    el: '#app',
-});
+// vue3-cookies
+// copy code from https://www.npmjs.com/package/vue3-cookies
+import VueCookies from 'vue3-cookies'
+
+// moment 
+import moment from 'moment'
+
+const app = createApp(App)
+
+app.config.globalProperties.$axios = axios;
+app.component('font-awesome-icon',FontAwesomeIcon)
+app.use(router)
+app.use(JoditEditor)
+app.use(VueCookies)
+app.mount('#app')
