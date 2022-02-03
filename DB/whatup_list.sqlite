@@ -1,0 +1,13 @@
+ 
+/* ========================== Backup whatup id 3 ==========================
+ * on date 2022-02-03 19:11:13 pm
+ * */
+INSERT INTO `whatups`(`user_id`,`wp_title`,`wp_body`,`is_public`,`created_at`,
+`updated_at`) VALUES(
+    '1',
+    'this is my new one',
+    '<p>this is my new one my friend ha ha</p>',
+    '1',
+    '2022-02-03 19:11:13',
+    '2022-02-03 19:11:13');
+ 

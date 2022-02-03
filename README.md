@@ -2,8 +2,8 @@
 
 
 
-> baanlungpa.com is the next website project I have just not start  last 
-> update 1 June 2021 from manjaro Laptop 
+> baanlungpa.com is the  project I have just start  on Jan 21 2022 
+> last update 3 Feb 2022 from Arch Linux Laptop 
 
 
 ## ================ coding skill level ==========|
@@ -13,6 +13,53 @@
 
 ## ================ Theme =======================|
 
+
+## =============== SET responsive image background 
+> copy code from 
+> `https://stackoverflow.com/questions/12609110/responsive-css-background-images`
+
+
+```
+
+
+#app section.hero.is-danger.is-fullheight{
+    /*border:2px solid #ff0000; */
+    background: url('/img/baanlungpa_logo1_cut.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: contain;
+    -moz-background-position: center;
+    -o-background-size: cover;
+    background-size: contain;
+    background-position: center;
+    /*min-width:100vh;*/
+}
+
+
+@media (max-width:760px){
+    
+    #app section.hero.is-danger.is-fullheight{
+        /*border:2px solid #ff0000; */
+        background: url('/img/baanlungpa_bg1.png');
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-repeat:no-repeat;
+        background-size: contain;
+        background-position:center;
+    }
+    
+}
+
+
+```
+
+
+## update datetime timestamps field with null 
+
+> get the code from https://stackoverflow.com/questions/53631528/laravel-not-updating-null-values-to-column
+> on 2 Feb 2022 when I tried to update the users tables email_verified_at field
+> to null not 'NULL' and in Models User added the fillable `email_verified_at`. 
+> otherwise will be error cannot make change to field.
 
 
 ## =============== install agent 28 Jan 2022

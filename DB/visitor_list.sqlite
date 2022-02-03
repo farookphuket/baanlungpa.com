@@ -1,0 +1,14 @@
+ 
+/* ========================== Backup visitor id 4 ==========================
+ * on date 2022-02-03 19:09:27 pm
+ * */
+INSERT INTO `visitors`(`ip`,`os`,`browser`,`device`,`visited_at`,`created_at`,
+`updated_at`) VALUES(
+    '127.0.0.1',
+    'Linux ',
+    'Chrome 97.0.4692.71',
+    'WebKit',
+    '2022-02-03 19:09:27',
+    '2022-02-03 19:09:27',
+    '2022-02-03 19:09:27');
+ 

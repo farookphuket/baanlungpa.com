@@ -1,4 +1,4 @@
-@extends('x_pub.x')
+@extends('x')
 
 @section('meta_title','sent greeting to new user')
 

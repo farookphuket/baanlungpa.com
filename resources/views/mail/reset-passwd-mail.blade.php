@@ -1,5 +1,4 @@
-
-@extends('template')
+@extends('x')
 
 @section('meta_title','forgot your password? reset it now new mail password')
 

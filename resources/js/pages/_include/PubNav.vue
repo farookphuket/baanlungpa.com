@@ -2,8 +2,10 @@
  <header :class="{ 'is-transformed': !showNavbar }" class="navbar is-fixed-top is-transparent is-spaced" >
     <div class="container">
       <div class="navbar-brand is-family-secondary">
-        <router-link to="/" class="navbar-item">
-          <h1 class="is-size-4">Vue</h1>
+          <router-link :to="{name:'Home'}" class="navbar-item">
+              <figure class="logo">
+                <img src="/img/house.png" alt="บ้านลุงป้าดอทคอม">
+              </figure>
         </router-link>
         <a :aria-expanded="isActive" :class="{ 'is-active': isActive }" role="button" class="navbar-burger" aria-label="menu" data-target="collapse" @click="isActive = !isActive" >
           <span aria-hidden="true" />
@@ -14,7 +16,13 @@
       <div id="collapse" :class="{ 'is-active': isActive }" class="navbar-menu is-paddingless" >
         <nav class="navbar-end">
           <router-link to="/" class="navbar-item">Home</router-link>
-          <router-link :to="{name:'About'}" class="navbar-item">Blog</router-link>
+          <router-link :to="{name:'About'}" class="navbar-item">About</router-link>
+
+          <router-link :to="{name:'LoginPage'}" 
+              class="navbar-item">Login</router-link>
+
+          <router-link :to="{name:'RegisterPage'}" 
+              class="navbar-item">Register</router-link>
         </nav>
       </div>
     </div>
