@@ -116,10 +116,10 @@ export const routes = [
     },
     {
 
-//        path:'/:pathMatch(.*)*',
-//        beforeEnter:(to,from,next)=>{
-//            next({name:'PageNotFound'})   
-//        },
+        path:'/:pathMatch(.*)*',
+        beforeEnter:(to,from,next)=>{
+            next({name:'PageNotFound'})   
+        },
     },
 
     {
