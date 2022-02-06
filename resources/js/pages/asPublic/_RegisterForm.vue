@@ -40,6 +40,7 @@ export default{
     name:"RegisterForm",
     data(){return{
         res_status:'',
+        hasConfirmationCode:null,
         uForm:new Form({
             email:'',
             name:'',
@@ -47,12 +48,14 @@ export default{
         }),
     }},
     mounted(){
+        this.isUserHasConfirmationCode()
         setTimeout(()=>{
             this.$refs.name.focus()
         },1500)
     },
     methods:{
         register(){
+            this.hasConfirmationCode = null
             let url = `/api/register`
             let uData = new FormData()
             uData.append('name',this.uForm.name)
@@ -61,16 +64,24 @@ export default{
             axios.post(url,uData)
                 .then(res=>{
                     this.res_status = res.data.msg
+                    this.hasConfirmationCode = res.data.confirmation_code
+                    console.log(`the code is ${this.hasConfirmationCode}`)
+                    this.$cookies.set("user_has_confirmation_code",
+                        this.hasConfirmationCode)
+                    setTimeout(()=>{
+                        this.res_status = ''
+                    },3200)
                 })
                 .catch(err=>{
                     this.res_status = `<span class="tag is-medium is-danger">
                         ${Object.values(err.response.data.errors).join()}
                         </span>`
                 })
-            setTimeout(()=>{
-                this.res_status = ''
-            },3200)
 
+
+        },
+        isUserHasConfirmationCode(){
+            this.$emit('isUserHasConfirmationCode')
         },
 
     },

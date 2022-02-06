@@ -2,12 +2,16 @@
     <div>
        <div class="container mb-6">
                 <h1 class="title has-text-centered">
-                    currently woroking on
+                    currently working on
                 </h1>
                 <p class="subtitle">
                     baanlungpa.com project which using 
                 </p>
                 <div class="content">
+                    <p class="mb-4">
+                        I using all this free code to create my web app and 
+                        I will share this to you if you want to.
+                    </p>
                     <ol class="is-lower-roman">
                         <li>
                             <span class="tag is-medium is-success">

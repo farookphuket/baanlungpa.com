@@ -30,32 +30,15 @@ Step 5: Define Route
             </div>
             <div class="column">
                 <p>this is another column</p>
-                <register-form></register-form>
+                <register-form 
+                    @isUserHasConfirmationCode="afterRegistered"></register-form>
             </div>
 
         </div>
 
-        <!-- dialog box will show after user has registered START -->
-        <div class="modal" :class="{'is-active':isModalShow}">
-            <div class="modal-background"></div>
-            <div class="modal-card">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">Thank you.</p>
-                    <button class="delete" aria-label="close"></button>
-                </header>
-                <section class="modal-card-body">
-                    <!-- Content ... -->
-                    <after-user-has-registered></after-user-has-registered>
-                </section>
-                <footer class="modal-card-foot">
-                    <button class="button is-success" 
-                        @click.prevent="goLogin">yes, I'm in</button>
-                    <button class="button" 
-                        @click.prevent="isModalShow = ''">Cancel</button>
-                </footer>
-            </div>
-        </div>
-        <!-- dialog box will show after user has registered END -->
+
+        <after-user-has-registered 
+            ref="runAfterRegister"></after-user-has-registered>
     </section>
 </template>
 <script>
@@ -73,11 +56,11 @@ export default{
         } 
     },
     mounted(){
-        this.afterRegistered()
+
     },
     methods:{
         afterRegistered(){
-            this.isModalShow = 'is-active'
+            this.$refs.runAfterRegister.isUserHasConfirmationCode()
         },
         goLogin(){
             let url = '/login'

@@ -18,7 +18,7 @@
             <router-link :to="{name:'MemberDashboard'}" class="navbar-item">Home</router-link>
           <router-link :to="{name:'About'}" class="navbar-item">About</router-link>
 
-          <router-link :to="{name:'LoginPage'}" 
+          <router-link :to="{name:'Profile'}" 
               class="navbar-item">Profile</router-link>
 
           <router-link :to="{name:'LogoutPage'}" 

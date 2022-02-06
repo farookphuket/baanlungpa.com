@@ -43,11 +43,8 @@
                 <p class="title has-text-centered">
                     {{wp.wp_title}}
                 </p>
-                <div>
-                    <p class="subtitle">
-                        {{wp.user.name}}
-                    </p>
-                    <nav class="level is-mobile">
+                <div class="mb-4">
+                    <nav class="level is-mobile mb-4 mt-4">
                         <div class="level-item">
                             <span class="ml-2 pr-2">
                                 <font-awesome-icon icon="user">

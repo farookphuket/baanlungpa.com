@@ -81,7 +81,7 @@ class RegisterController extends Controller
         $token = $user->createToken('auth_token')->plainTextToken;
 
         // sent user confirmation link
-        $this->sentUserConfirm();
+        $code = $this->sentUserConfirm();
 
         $user_name = $user->name;
 
@@ -89,7 +89,8 @@ class RegisterController extends Controller
         $msg = "<span class=\"tag is-medium is-success\">
             Success {$ue['name']} you have registered</span>";
         return response()->json([
-            "msg" => $msg
+            "msg" => $msg,
+            "confirmation_code" => $code
         ]);
     }
 
@@ -107,18 +108,23 @@ class RegisterController extends Controller
             "token" => $str,
             "created_at" => now()
         ]);
+        $get["website"] = $website;
+
         $data = array(
             "name" => $get['name'],
-            "title" => 'Please DO-NOT-REPLY!',
+            "title" => 'Please confirm is this you?',
             "link" => $link,
-            "website" => $website
+            "website" => $website,
+            "code" => $str
         );
         Mail::send('mail.user-confirmation-email',$data,function($msg) use ($get){
             $msg->from('no-reply@'.request()->getHttpHost());
             $msg->to($get['email'],'no-reply-back')->subject("Dear 
-            {$get['name']} thank you for join us!
+            {$get['name']} please confirm your account at {$get['website']}!
             ");
         });
+
+        return $str;
     }
 
     public function userHasConfirmed($token){

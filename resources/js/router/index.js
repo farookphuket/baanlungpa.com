@@ -1,4 +1,5 @@
-import {createWebHistory, createRouter} from "vue-router";
+import {createWebHistory, createRouter } from "vue-router";
+
 
 
 // as public view port
@@ -11,6 +12,9 @@ import LogoutPage from '../pages/asPublic/LogoutPage.vue'
 import PageNotFound from "../pages/asPublic/PageNotFound.vue"
 import UserConfirmationFail from "../pages/asPublic/UserConfirmationFail.vue"
 import userHasConfirmed from "../pages/asPublic/UserHasConfirmed.vue"
+import UserMustVerify from '../pages/asPublic/UserMustVerify.vue'
+import ForgotPassword from "../pages/asPublic/ForgotPassword/ForgotPassword.vue"
+import UserResetPassword from "../pages/asPublic/ForgotPassword/UserResetPassword.vue"
 import Visitor from "../pages/asPublic/Visitor.vue"
 
 // as Admin view 
@@ -21,6 +25,8 @@ import AdminUser from "../pages/asAdmin/User.vue"
 // as Member 
 import MemberView from "../pages/_include/MemberView.vue"
 import MemberDashboard from "../pages/asMember/Dashboard.vue"
+
+import Profile from "../pages/asMember/Profile/Profile.vue"
 
 export const user_id = window.lsDefault.user_id
 
@@ -45,20 +51,50 @@ export const routes = [
             {
                 name: 'LoginPage',
                 path: '/login',
-                component: LoginPage
+                component: LoginPage,
+                beforeEnter:(to,from,next)=>{
+                    if(user_id){
+                        window.history.back()
+                    }else{
+                        next()
+                    }
+
+                },
             },
 
             {
                 name: 'RegisterPage',
                 path: '/register',
-                component: RegisterPage
+                component: RegisterPage,
+                beforeEnter:(to,from,next)=>{
+                    if(user_id){
+                        window.history.back()
+                    }else{
+                        next()
+                    }
+                },
+            },
+            {
+                name:'ForgotPassword',
+                component:ForgotPassword,
+                path:'/forgotpassword'
             },
             {
                 name:"userHasConfirmed",
                 path:"/user-has-confirmed",
                 component:userHasConfirmed,
             },
+            {
+                name:'UserMustVerify',
+                component:UserMustVerify,
+                path:'/user-must-verify'
+            },
 
+            {
+                name:'UserConfirmationFail',
+                component:UserConfirmationFail,
+                path:'/user-confirmation-fail'
+            },
             {
                 name: 'Visitor',
                 path: '/visitor',
@@ -73,10 +109,29 @@ export const routes = [
         path:'/page-not-found'
     },
     {
+        name:"UserResetPassword",
+        component:UserResetPassword,
+        path:'/user-reset-password',
+        meta:{requiresGuest:true},
+    },
+    {
 
-        path:'/:pathMatch(.*)*',
+//        path:'/:pathMatch(.*)*',
+//        beforeEnter:(to,from,next)=>{
+//            next({name:'PageNotFound'})   
+//        },
+    },
+
+    {
+        name:"Profile",
+        component:Profile,
+        path:'/profile',
         beforeEnter:(to,from,next)=>{
-            next({name:'PageNotFound'})   
+            if(!user_id){
+                next({name:'LoginPage'})
+            }else{
+                next()
+            }
         },
     },
 

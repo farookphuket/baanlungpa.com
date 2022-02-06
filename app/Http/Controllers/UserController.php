@@ -8,6 +8,7 @@ use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+use Auth;
 use DB;
 
 class UserController extends Controller
@@ -21,7 +22,14 @@ class UserController extends Controller
 
     public function index()
     {
-        //
+        $user = null;
+        if(Auth::check()):
+            $user = Auth::user();
+        endif;
+        return response()->json([
+            "user" => $user
+        ]);
+
     }
 
 

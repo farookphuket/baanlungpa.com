@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Hash;
 
-use Illuminate\Support\Facades\Crypt;
+//use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Mail;
 
 // this line is very important
 use Session;
@@ -20,6 +23,7 @@ use DB;
 class LoginController extends Controller
 {
     protected $user_token_table = "personal_access_tokens";
+    protected $reset_password_table = "password_resets";
     /**
      * Display a listing of the resource.
      *
@@ -41,6 +45,112 @@ class LoginController extends Controller
         return response()->json([
             "user" => $user
         ]);
+
+    }
+
+    public function forgotPassword(){
+        $valid = request()->validate([
+            "email" => ["required","email"]
+        ]);
+
+        $msg = "";
+        // check if this email exist
+        $user = User::where("email",request()->email)
+                        ->first();
+        if($user == null || $user == '' || $user == NULL):
+            $msg = "<span class=\"tag is-medium has-text-weight-bold 
+                has-text-danger \">
+                Error! we cannot find your account.
+            </span>";
+        else:
+
+           $x = $this->sentResetLinkEmail($user); 
+            $msg = "<span class=\"tag is-medium has-text-weight-bold 
+                has-text-success \">
+                Success! please check your email.
+            </span>";
+        endif;
+
+        return response()->json([
+            "msg" => $msg,
+            "user" => $x,
+        ]);
+    }
+
+    public function sentResetLinkEmail(User $user){
+
+        $reset_token = Str::random(60);
+        $reset_link = URL::to('/user-reset-password/'.$reset_token);
+        $website = request()->getHttpHost();
+
+        // insert data to reset table 
+        DB::table($this->reset_password_table)
+            ->insert([
+                "email" => $user->email,
+                "token" => $reset_token,
+                "created_at" => now()
+            ]);
+
+        $user["website"] = $website;
+        $user["token"] = $reset_token;
+
+
+        $prepareSentData = array(
+            "name" => $user->name,
+            "title" => "reset user password DO NOT Reply",
+            "reset_link" => $reset_link,
+            "website" => $website
+        );
+
+        Mail::send("mail.reset-passwd-mail",$prepareSentData,
+            function($message) use ($user){
+                $message->from("no-reply@".$user["website"]);
+                $message->to($user["email"],'please do not reply this message')
+                        ->subject("dear {$user['name']} you have request to reset 
+                    your password");
+        });
+
+        return $user;
+    }
+
+    
+    public function userResetPassword($token){
+        $url = '/user-reset-password';
+
+        //dd($token);
+        Session::put("user_reset_password_token",$token);
+
+        $utk = Session::get("user_reset_password_token");
+        return redirect($url)->with([
+            "user_token" => $utk
+        ]);
+    }
+
+    public function myTimeout(){
+        // token age is 6 min.
+        $token = Session::get("user_reset_password_token");
+        
+        $user_tk = DB::table($this->reset_password_table)
+                ->where("token",$token)
+                ->whereDate("created_at","=",date("Y-m-d"))
+                ->first();
+
+        $time_left = 0;
+
+        if($user_tk != null):
+            // user has 6 minute before time up
+            $since = strtotime($user_tk->created_at)+(60*6);
+            $end = $since-time();
+            $time_left = round((int)$end/60);
+        endif;
+         
+        //$user = Session::get("user_reset_password_token");
+
+        return response()->json([
+            "time_left" => $time_left
+        ]);
+    }
+    public function userHasSetPassword(){
 
     }
 
@@ -102,13 +212,21 @@ class LoginController extends Controller
 
 
     public function getUserUrl(){
-        $user = Auth::user();
+        $user = User::find(Auth::user()->id);
+
         $url = '';
-        if($user->is_admin != 0):
-            $url = "/admin";
+
+        if($user->email_verified_at == null || 
+            $user->email_verified_at == NULL || 
+        $user->email_verified_at == ''):
+            $url = '/user-must-verify';
         else:
-            $url = "/member";
+            if($user->is_admin != 0):
+                $url = '/admin';
+            endif;
+            $url = '/member';
         endif;
+
         return $url;
 
     }
@@ -143,9 +261,51 @@ class LoginController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(User $user)
     {
-        //
+
+        // get the token 
+        $token = Session::get("user_reset_password_token");
+
+        $get = DB::table($this->reset_password_table)
+                        ->where("token",$token)
+                        ->first();
+        
+        $email = $get->email;
+
+        $valid = request()->validate([
+            "password" => ["required_with:pass_conf","min:4","same:pass_conf"],
+            "pass_conf" => ["min:4"]
+        ],[
+            "password.same" => "Error the confirmation not match!",
+            "pass_conf.same" => "Error! not match",
+            "pass_conf.min" => "Error! confirm too short"
+        ]);
+
+        $new_pass = Hash::make(request()->password);
+        unset($valid["pass_conf"]);
+        $valid["password"] = $new_pass;
+        $valid["updated_at"] = now();
+
+        //get user 
+        $u = User::where("email",$email)
+                    ->first();
+
+        // update the password 
+        User::where("email",$email)
+                ->update($valid);
+
+        // then delete the reset password token
+        DB::table($this->reset_password_table)->truncate();
+
+        Session::flush();
+
+        $msg = "<span class=\"tag is-medium has-text-weight-bold 
+            has-text-success\">Success you have reset your password</span>";
+
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 
     /**

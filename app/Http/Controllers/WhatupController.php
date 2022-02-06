@@ -20,14 +20,33 @@ class WhatupController extends Controller
     }
 
     public function getWhatup(){
-        $wp = Whatup::has('user')
-                    ->with('user')
-                    ->orderBy("created_at","DESC")
-                    ->paginate(4);
+        $wp = "";
+        if(Auth::check()):
+            $wp = $this->getMemberWhatup();
+        else:
+            $wp = Whatup::where("is_public","!=",0)
+                        ->has('user')
+                        ->with('user')
+                        ->orderBy("created_at","DESC")
+                        ->paginate(4);
+        endif;
+
         return response()->json([
             "whatup" => $wp
         ]);
     }
+
+    public function getMemberWhatup(){
+
+        $wp = Whatup::where("is_public","!=",0)
+                    ->orWhere("user_id",Auth::user()->id)
+                    ->has('user')
+                    ->with('user')
+                    ->orderBy("created_at","DESC")
+                    ->paginate(4);
+        return $wp;
+
+    } 
 
     /**
      * Show the form for creating a new resource.
@@ -74,7 +93,8 @@ class WhatupController extends Controller
         // backup to file 
         Whatup::backupWhatup($wp->id,"insert");
 
-        $msg = "<span class=\"tag is-medium is-success\">
+        $msg = "<span class=\"has-text-success has-text-justify 
+            has-text-weight-bold is-size-1-mobile\">
             Success : your post has been created</span>";
         return response()->json([
             "msg" => $msg
@@ -139,7 +159,8 @@ class WhatupController extends Controller
         // save to backup file 
         Whatup::backupWhatup($whatup->id,"edit");
 
-        $msg = "<span class=\"tag is-medium is-success\">
+        $msg = "<span class=\"has-text-success has-text-justify 
+            has-text-weight-bold is-size-1-mobile \">
             Success : your post has been updated</span>";
         return response()->json([
             "msg" => $msg
@@ -154,6 +175,13 @@ class WhatupController extends Controller
      */
     public function destroy(Whatup $whatup)
     {
-        //
+        $del = Whatup::find($whatup->id);
+
+        $msg = "<span class=\"has-text-success has-text-justify 
+            has-text-weight-bold is-size-1-mobile\">
+            Success : your post has been deleted</span>";
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 }

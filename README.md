@@ -54,6 +54,15 @@
 ```
 
 
+
+## date 6 Feb 2022 
+
+> create "password reset","whatup"
+> jodit-vue3 cannot load the current edit data on update.
+
+
+
+
 ## update datetime timestamps field with null 
 
 > get the code from https://stackoverflow.com/questions/53631528/laravel-not-updating-null-values-to-column

@@ -27,6 +27,11 @@ $data = [
         ?>
 
     @endauth
+
+    @if(Session::has("user_reset_password_token"))
+        {{$data["user_reset_password_token"] = Session::get("user_reset_password_token")}}
+    @endif
+
     <script>
         window.lsDefault = @json($data)
     </script>

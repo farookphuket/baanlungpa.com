@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController as Regis;
 use App\Http\Controllers\WhatupController as Whatup;
 use App\Http\Controllers\VisitorController as Visit;
 use App\Http\Controllers\UserController as User;
+use App\Http\Controllers\ProfileController as Profile;
 
 
 // Member route 
@@ -50,6 +51,19 @@ Route::post('/register',[Regis::class,'store'])
 Route::post('/login',[Login::class,'store'])
     ->name('login');
 
+// forgotpassword 
+Route::post('/forgotpassword',[Login::class,"forgotPassword"])
+    ->name("forgotPassword");
+
+/* 6 Feb 2022
+ * user has click on the reset password link via e-mail 
+ * the end point for form submit will be hit this url to reset user password
+ * */ 
+Route::get('/my-timeout',[Login::class,"myTimeout"])
+    ->name("myTimeout");
+Route::put('/user-has-reset-password',[Login::class,"update"]);
+
+
 // check if the user has passport
 Route::get('/checkuserpassport',[Login::class,'checkUserPassport'])
     ->name('checkUserPassport');
@@ -71,13 +85,16 @@ Route::prefix("member")->name("member.")->middleware('auth:sanctum')
     Route::resource("/whatup",Whatup::class);
 
 //
-//    // profile
-//    Route::resource('/profile',Profile::class);
-//
+    // profile
+    Route::resource('/profile',Profile::class);
+    Route::post('/confirm',[Profile::class,"userIsConfirmed"])
+        ->name("userIsConfirmed");
 //    // confirm password 
 //    Route::post('/confirm-password',[USER::class,"userIsConfirmPassword"])
 //        ->name("userIsConfirmPassword");
 
+    // user 
+    Route::resource("/user",User::class);
     /* Logout from member */
     Route::delete('/logout',[Login::class,'destroy'])->name('logout');
 
@@ -88,7 +105,10 @@ Route::prefix("member")->name("member.")->middleware('auth:sanctum')
 /* make a route prefix for member group */
 Route::prefix("admin")->name("admin.")->middleware('auth:sanctum')
         ->group(function(){
+
     Route::resource('/dashboard',Admin::class);
+
+    Route::resource('/profile',Profile::class);
 
     // whatup 
     Route::resource("/whatup",Whatup::class);

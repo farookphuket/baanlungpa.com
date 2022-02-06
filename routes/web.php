@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController as Regis;
+use App\Http\Controllers\LoginController as Login;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +20,8 @@ Route::get('/', function () {
 
 route::get('/userHasConfirmed/{token}',[Regis::class,"userHasConfirmed"]);
 
+route::get('/user-reset-password/{token}',[Login::class,"userResetPassword"])
+    ->name("userResetPassword");
 
 Route::get('{any}', function () {
     return view('x');
