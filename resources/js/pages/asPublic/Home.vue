@@ -17,26 +17,13 @@
 </section>
 <section class="body_content">
 
-        <article>
-            <div>
-                <h2 class="title has-text-danger">this is the article div</h2>
-            </div>
-        </article>
-        <p class="title has-text-centered">this is the p title</p>
-        <div class="box">
-            <h1>this is the box in home</h1>
-            <div class="field"><button class="button is-primary is-rounded 
-                    is-outlined" @click.prevent="isModalShow='is-active'">
-                    <font-awesome-icon icon="check"></font-awesome-icon>
-                </button></div>
-        </div>
 
         <!-- show list of whatup START -->
         
         <div class="container">
 
             <p class="title" v-if="whatup.data == 0">
-                There is no data now.
+                There is no data yet!
             </p>
             <article class="box content mb-4" 
                 v-for="wp in whatup.data" v-else>

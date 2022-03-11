@@ -1,32 +1,27 @@
 <template>
     <div>
-        <div class="content mb-4">
+        <div class="content mb-4 pb-6">
             <div class="field is-pulled-right">
                 <button class="button is-primary" 
                     @click="showForm='true'" v-if="showForm == false">
                     <font-awesome-icon icon="plus"></font-awesome-icon>
                 </button>
                 <button class="button is-danger" 
-                        @click="showForm = false"
+                        @click="closeRefresh"
                     v-else>
                     <font-awesome-icon icon="times"></font-awesome-icon>
                 </button>
             </div>
         </div>
-        <div class="container mt-6 mb-6" 
+
+
+        <div class="mt-6 mb-6 pb-4" 
             v-show="showForm">
-            <div class="card">
-                <header class="card-header">
-                    <p class="card-header-title">
-                        new what's up
-                    </p>
-                </header>
-                <div class="card-content">
-                    <whatup-form @getWhatup="getWhatup($event)" 
-                        :editId="editId" 
-                        ></whatup-form>
-                </div>
-            </div><!-- end of div.card -->
+            <whatup-form 
+                @getWhatup="getWhatup($event)" 
+                @closeRefresh="closeRefresh($event)"
+                :editId="editId" 
+                ></whatup-form>
         </div>
         <div class="columns is-mobile">
             <div class="column">
@@ -40,28 +35,21 @@
         </div><!-- end of div.columns -->
 
         <!-- modal START -->
-        <div class="modal" :class="{'is-active':isModalShow}">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-                <!-- Any other Bulma elements you want -->
-                <div class="content box">
-                    <div v-html="res_status"></div>
-                </div>
-            </div>
-            <button class="modal-close is-large" aria-label="close" 
-                @click.prevent="isModalShow = ''"></button>
-        </div>
+        <x-box :msg="res_status" ref="xbox"></x-box>
         <!-- modal END -->
     </div>
 </template>
 <script>
 import WhatupForm from './WhatupForm.vue'
 import WhatupList from './WhatupList.vue'
+import xBox from "../../_include/BoxModal.vue"
+
 export default{
     name:"AdminWhatup",
     components:{
         WhatupForm,
         WhatupList,
+        xBox,
     },
     data(){return{
         showForm:false,
@@ -75,17 +63,15 @@ export default{
     },
     methods:{
         getWhatup(page){
-            this.res_status = ''
-            this.isModalShow = ''
             this.editId = 0
             let url = ''
             if(page){
-                url = page
+                url = `${page}&perpage=10`
                 this.$cookies.set('wa_old_page',url)
             }
             url = this.$cookies.get('wa_old_page')
             if(!url){
-                url = `/api/getwhatup`
+                url = `/api/admin/whatup?perpage=10`
             }
             axios.get(url)
                 .then(res=>{
@@ -105,13 +91,34 @@ export default{
                 axios.delete(url)
                     .then(res=>{
                         this.res_status = res.data.msg
-                        this.isModalShow = 'is-active'
+                        //this.isModalShow = 'is-active'
+                        this.openBox({msg:this.res_status,timeOut:2500})
+
                         setTimeout(()=>{
                             this.getWhatup()
                         },3200)
                     })
             }
             return
+        },
+        openBox({msg,timeOut = 0}){
+            this.res_status = msg
+            this.$refs.xbox.showBoxModal()
+            if(timeOut && timeOut !== 0){
+                setTimeout(()=>{
+                    this.$refs.xbox.hideBoxModal()
+                },timeOut)
+
+            }else{
+                //console.log(`the time is ${timeOut}`)
+                this.$refs.xbox.hideBoxModal()
+            }
+        },
+        closeRefresh(){
+            alert(`the page need to be reload!`)
+            setTimeout(()=>{
+                location.reload()
+            },1500)
         },
     }
 }

@@ -80,23 +80,32 @@ export default{
         token:''
     }},
     mounted(){
-        
+        setTimeout(()=>{
+            this.$refs.email.focus()
+        },800)
     },
     methods:{
         login(){
             this.res_status = "submitting..."
-            let r_url = '/login'
+            this.$cookies.remove("user_must_verify")
+            let r_url = '/user_must_verify'
             let fData = new FormData()
             fData.append("email",this.loForm.email)
             fData.append("password",this.loForm.password)
             let url = `/api/login`
             axios.post(url,fData)
                 .then(res=>{
-                    
+                    let user_must_verify = res.data.user_must_verify 
+
                     this.res_status = res.data.msg
                     this.token = res.data.access_token
                     this.$cookies.set("token",this.token)
-                    //console.log(res.data)
+                    if(user_must_verify !== false){
+                        this.$cookies.set('user_must_verify',true)
+                    }
+
+//                    console.log(res.data)
+
                     r_url = res.data.url
                     setTimeout(()=>{
                         location.href=r_url

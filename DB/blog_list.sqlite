@@ -1,0 +1,258 @@
+/*
+    ======================== DO NOT DELETE ME =================================
+    ============ THIS IS THE DEFAULT DATA PLEASE DO NOT DELETE ================
+    ===========================================================================
+*/
+
+
+
+/* ======================= insert Blog id 1 ========================
+ * on 2007-10-29 12:21:25 pm
+ *
+ * */
+INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
+`bl_is_public`,`bl_body`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'my new post my default post',
+    'my-new-post-default-post',
+    '
+    <div class="columns">
+        <div class="column">
+            <figure class="justify-content-center">
+                <img 
+                src="https://i.ibb.co/CBD2wgH/baanlungpa-17-feb-2022.png" 
+                alt="my default data picture">
+            </figure>
+        </div>
+        <div class="column">
+            <div class="content">
+                <p class="title">
+                    please do edit me from the file "post_list.sqlite"
+                </p>
+                <p>
+                    this is the default post that will be come when you run the command 
+
+                </p>
+
+                <pre>
+                    <code>
+                        <span>
+                            php artisan db:seed
+                        </span>
+                    </code>
+                </pre>
+                <p>
+                    please do edit me if you want it to be your content but do 
+                    not delete me out from the file "post_list.sqlite" because 
+                    it will throw Error when you run "php artisan db:seed" 
+                    command.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    ',
+    '1',
+    '
+
+    <div>
+        <p class="title has-text-danger">
+            Do Not Delete me from "post_list.sqlite" file 
+        </p>
+        <p class="subtitle">
+            I am your backup data file
+        </p>
+        <p>
+            you can edit me to your data but 
+            <span class="tag is-danger is-medium has-text-info">
+            DO NOT DELETE
+            </span> 
+            this file need to have at lease 1 row of data to run a script 
+
+        </p>
+
+        <pre>
+            <code><span>
+            php artisan db:seed
+            </span></code>
+        </pre>
+        <p>
+            unless you''re desired 
+            <span class="tag has-text-danger">not</span> 
+            to use the default data then you just avoid to run 
+            "php artisan db:seed" command.
+        </p>
+    </div>
+
+
+    ',
+    '2007-10-29 12:21:24',
+    '2007-10-29 12:21:24');
+ 
+ 
+/*
+    ======================== DO NOT DELETE ME =================================
+    ============ THIS IS THE DEFAULT DATA PLEASE DO NOT DELETE ================
+    ===========================================================================
+*/
+
+
+
+
+
+
+
+ 
+/* ======================= insert Blog id 2 ========================
+ * on 2022-02-25 21:10:34 pm
+ *
+ * */
+INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
+`bl_is_public`,`bl_body`,`created_at`,`updated_at`) VALUES(
+    '4',
+    'วิชาประกันภัยในอุตสาหากรรมขนส่งและโลจิสติกส์',
+    'วิชาประกันภัยในอุตสาหากรรมขนส่งและโลจิสติกส์',
+    '
+<div class="columns is-mobile">
+<div class="column">
+<figure class="justify-contenr-center">
+<img src="https://www.prachachat.net/wp-content/uploads/2021/09/5-4-728x409.jpg">
+</figure>
+<p class="pt-2 has-text-centered">
+สื่อการสอนวิชาการประกันภัยอุตสาหกรรมการขนส่งและโลจิสติกส์
+</p>
+</div>
+<div class="column">
+<p class="title">
+เรียนออนไลน์กับครูมดแดง
+</p>
+<p>สอนวิชาการประกันภัยอุตสาหกรรมการขนส่งและโลจิสติกส์</p>
+</div>
+</div>
+
+    ',
+    '1',
+    '
+<div class="mt-4 pt-2">
+
+<div class="video-container">
+<iframe src="https://archive.org/embed/23-02-2022-1_class" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""></iframe>
+</div>
+<p class="pt-2 has-text-centered">
+วิดิโอการสอนวิชา การประกันภัยอุตสาหกรรมการขนส่งและโลจิสติกส์
+</p>
+</div>
+
+    ',
+    '2022-02-25 21:10:34',
+    '2022-02-25 21:10:34');
+ 
+
+/* ======================= insert Blog id 3 ========================
+ * on 2022-03-04 08:10:47 am
+ *
+ * */
+INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
+`bl_is_public`,`bl_body`,`created_at`,`updated_at`) VALUES(
+    '4',
+    'เที่ยวสระแก้วกับป้าวันที่ 26 กุมภาฯ 2565',
+    'เที่ยวสระแก้วกับป้าวันที่-26-กุมภาฯ-2565',
+    '<div class="columns is-mobile">
+    <div class="column">
+        <figure class="justify-content-center">
+            <img src="https://i.ibb.co/mhFDLVF/sakaew-25-feb-2022.png">
+        </figure>
+        <p class="has-text-centered pt-2">
+            สระแก้วกับป้า
+        </p>
+    </div>
+    <div class="column">
+        <p class="title has-text-success">
+            ไปเที่ยวสระแก้วกับป้า
+        </p>
+        <p>
+             วันที่ 26 กุมภาฯ 2565</p>
+    </div>
+</div>',
+    '1',
+    '<div class="pt-4 mt-4 mb-4">
+    <p class="mb-4">
+        ปั่นจักรยานยังไม่ทันได้เหงื่อเลย เด็กติสหนีกลับเสียงั้น
+    </p>
+    <div class="video-container">
+        <iframe src="https://archive.org/embed/trip26-feb-2022_with_jang-and-family" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""></iframe>
+    </div>
+    <p class="pt-2 has-text-centered">ดูวิดิโอ</p>
+    <p class="pt-2">
+        แล้วเจอกันใหม่นะ
+    </p>
+</div>',
+    '2022-03-04 08:10:47',
+    '2022-03-04 08:10:47');
+
+
+ 
+/* ======================= insert Blog id 4 ========================
+ * on 2022-03-11 16:40:05 pm
+ *
+ * */
+INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
+`bl_is_public`,`bl_body`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'เรียนขายของออนไลน์ รุ่น 208 วันที่ 10 มี.ค. 2565',
+    'เรียนขายของออนไลน์-รุ่น-208-วันที่-10-มีค-2565',
+    '<div class="columns is-mobile">
+    <div class="column">
+        <figure class="justify-content-center">
+            <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg">
+        </figure>
+        <p class="pt-2 has-text-centered">
+            เรียนออนไลน์รุ่นที่ 208
+        </p>
+    </div>
+    <div class="column">
+        <div>
+
+
+            <p class="title">
+                เก็บไว้เป็นที่ระลึก และเผื่อใครอยากจะศึกษาคอร์สเรียนดีๆ แบบนี้
+
+            </p>
+            <p>
+                เรียนขายของออนไลน์ รุ่นที่ 208 ที่คุณภาพคับแก้ว แห่งปี 2022(10-12 พ.ศ. 2565)
+                เผื่อมีเพื่อนๆ นักเรียนคอร์สนี้ท่านใดอยากฟังอาจารย์สอนอีกครั้งเพราะว่าฟังไม่ทันในครั้งแรก
+            </p>
+
+        </div>
+    </div>
+</div>',
+    '1',
+    '<div class="content">
+
+    <div class="box mb-4">
+        <p class="title has-text-info">
+            เก็บไว้เป็นที่ระลึก
+        </p>
+        <p>
+            หรือหากท่านใดอยากแนะนำให้เพื่อนๆ ดูก็ยินดีนะครับ เรียนคอร์สนี้ได้อะไรดีๆ มากกว่าที่คุณคิด
+        </p>
+    </div>
+
+    <div class="video-container">
+        <iframe src="https://archive.org/embed/thai-course-online-98-thaibath-208-10-mar-2022" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""></iframe>
+    </div>
+    <p class="pt-2 has-text-centered">
+        เรียนขายของออนไลน์ คอร์ส 98 บาท รุ่นที่ 208 วันที่ 10 มีนาคม 2565
+    </p>
+    <p class="mt-4">
+        หากท่านต้องการเขียน คอมเม้น กรุณา 
+<a href="/login" class="button is-link">
+        ล๊อกอิน 
+</a>
+        ก่อนนะครับ
+    </p>
+</div>',
+    '2022-03-11 16:40:05',
+    '2022-03-11 16:40:05');
+ 

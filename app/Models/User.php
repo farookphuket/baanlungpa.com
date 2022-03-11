@@ -27,6 +27,7 @@ class User extends Authenticatable
         'email_verified_at'
     ];
 
+    protected $with = ["role"];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -55,13 +56,23 @@ class User extends Authenticatable
         return $this->HasMany(Whatup::class);
     }
 
-
-
-
+    public function defaultpage(){
+        return $this->hasMany(DefaultPage::class);
+    }
 
     public function role(){
         return $this->belongsToMany(Role::class);
     }
+
+
+    public function category(){
+        return $this->hasMany(Category::class);
+    }
+
+    public function blog(){
+        return $this->hasMany(Blog::class);
+    }
+
     public static function backupUser($user_id,$cmd=false){
         // table 
         $table = static::$user_table;

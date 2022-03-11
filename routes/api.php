@@ -8,6 +8,12 @@ use App\Http\Controllers\WhatupController as Whatup;
 use App\Http\Controllers\VisitorController as Visit;
 use App\Http\Controllers\UserController as User;
 use App\Http\Controllers\ProfileController as Profile;
+use App\Http\Controllers\CategoryController as Cat;
+use App\Http\Controllers\CommentController as Comment;
+use App\Http\Controllers\ReplyController as Reply;
+use App\Http\Controllers\BlogController as Blog;
+use App\Http\Controllers\TagController as Tag;
+use App\Http\Controllers\DefaultPageController as DefaultP;
 
 
 // Member route 
@@ -36,7 +42,31 @@ Route::get('/getvisitor',[Visit::class,'getVisitor'])
     ->name('getvisitor');
 Route::post('/visitor',[Visit::class,'store']);
 
+// comment 21 Feb 2022
+Route::get("/get-blog-comment",[Comment::class,"getBlogComment"])
+    ->name("getBlogComment");
 
+// reply 21 Feb 2022
+Route::get("/get-comment-reply",[Reply::class,"getCommentReply"])
+    ->name("getCommentReply");
+
+// static route that will follow the "/static-site/uri-segment" 
+Route::get("/static-site",[DefaultP::class,"index"]);
+Route::get('/static-site/{id:slug}',[DefaultP::class,"show"]);
+
+Route::get('/about-us',[DefaultP::class,"about"])
+    ->name("about");
+
+
+
+Route::get("/blog",[Blog::class,"index"]);
+Route::get("/blog/{id:slug}",[Blog::class,"show"]);
+
+Route::get("/getcategory",[Cat::class,"getCategory"])
+        ->name("getCategory");
+
+Route::get("/gettag",[Tag::class,"index"])
+        ->name("getTag");
 
 // get whatup as public
 Route::get('/getwhatup',[Whatup::class,'getWhatup'])
@@ -73,9 +103,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $user;
 });
 
+// get blog by the category id
+Route::get('/blog-by-category',[Blog::class,"getBlogByCategory"])
+    ->name("getBlogByCategory");
 
-
-/* make a route prefix for member group */
+/* #Member make a route prefix for member group */
 Route::prefix("member")->name("member.")->middleware('auth:sanctum')
         ->group(function(){
     Route::resource('/dashboard',Member::class);
@@ -84,7 +116,16 @@ Route::prefix("member")->name("member.")->middleware('auth:sanctum')
     // whatup 
     Route::resource("/whatup",Whatup::class);
 
-//
+    // blog 9-Feb-2022
+    Route::resource("/blog",Blog::class);
+
+    // comment 21 Feb 2022
+    Route::resource("/comment",Comment::class);
+
+
+    // reply 21 Feb 2022
+    Route::resource("/reply",Reply::class);
+
     // profile
     Route::resource('/profile',Profile::class);
     Route::post('/confirm',[Profile::class,"userIsConfirmed"])
@@ -95,6 +136,7 @@ Route::prefix("member")->name("member.")->middleware('auth:sanctum')
 
     // user 
     Route::resource("/user",User::class);
+
     /* Logout from member */
     Route::delete('/logout',[Login::class,'destroy'])->name('logout');
 
@@ -102,13 +144,38 @@ Route::prefix("member")->name("member.")->middleware('auth:sanctum')
 
 
 
-/* make a route prefix for member group */
+/* #Admin make a route prefix for Admin group */
 Route::prefix("admin")->name("admin.")->middleware('auth:sanctum')
         ->group(function(){
 
     Route::resource('/dashboard',Admin::class);
 
+    // defaultPage 
+    Route::resource("/default",DefaultP::class);
+
+    // what up 
+    Route::resource('/whatup',Whatup::class);
+
     Route::resource('/profile',Profile::class);
+
+    Route::get("/getcategory",[Cat::class,"getCategory"])
+        ->name("getCategory");
+    Route::resource("/category",Cat::class);
+
+    // blog 9-Feb-2022
+    Route::resource("/blog",Blog::class);
+
+    // comment 21 Feb 2022
+    Route::resource("/comment",Comment::class);
+    Route::get('/blog-comment',[Comment::class,'getBlogCommentAs'])
+        ->name('getBlogCommentAs');
+
+
+    // reply 21 Feb 2022
+    Route::resource("/reply",Reply::class);
+
+    // tag 9-Feb-2022
+    Route::resource("/tag",Tag::class);
 
     // whatup 
     Route::resource("/whatup",Whatup::class);

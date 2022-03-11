@@ -21,11 +21,27 @@
         <nav class="navbar-end">
             <router-link :to="{name:'AdminDashboard'}" 
                 class="navbar-item">Home</router-link>
-          <router-link :to="{name:'About'}" 
+
+          <router-link :to="{name:'AdminAbout'}" 
               class="navbar-item">About</router-link>
 
+          <router-link :to="{name:'AdminCategory'}" 
+              class="navbar-item">Category</router-link>
+
           <router-link :to="{name:'AdminUser'}" 
-              class="navbar-item">Manage</router-link>
+              class="navbar-item">User</router-link>
+
+          <router-link :to="{name:'AdminBlog'}" 
+              class="navbar-item">Blog</router-link>
+
+          <router-link :to="{name:'AdminTag'}" 
+              class="navbar-item">Tag</router-link>
+
+          <router-link :to="{name:'AdminComment'}" 
+              class="navbar-item">Comment</router-link>
+
+          <router-link :to="{name:'AdminReply'}" 
+              class="navbar-item">Reply</router-link>
 
           <router-link :to="{name:'LogoutPage'}" 
               class="navbar-item">Logout</router-link>
@@ -39,7 +55,7 @@
 import throttle from 'lodash/throttle'
 
 export default {
-    name:'PubNav',
+    name:'AdminNav',
   data() {
     return {
       isActive: false,

@@ -55,7 +55,7 @@
 
         <!-- pagination START -->
 
-            <div class="box">
+            <div class="box d-flex justify-content-center">
 
                 <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
                     <a class="pagination-previous is-current">All user(s) {{users.total}}</a>

@@ -1,6 +1,5 @@
 <template>
     <div>
-       <div class="container mb-6">
                 <h1 class="title has-text-centered">
                     currently working on
                 </h1>
@@ -70,7 +69,6 @@
                     .format("YYYY-MMMM-DD H:m:s a")}} or
                     {{moment("2003-01-21 23:45:50").fromNow()}}
                 </p>
-       </div>
     </div>
 </template>
 <script>

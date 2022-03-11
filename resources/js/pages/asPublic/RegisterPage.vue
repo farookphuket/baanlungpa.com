@@ -1,42 +1,32 @@
 <template>
     <section class="body_content">
-        <div class="columns">
-            <div class="column">
-                <p class="title">
-                    this is the colum
-                </p>
-                <div class="box">
-                    <p>
-(1) The original question was about scaling based on a browser window size. (2) Elements like div get their own height from their own content, or take available space in a flexbox model. Saying that without explicit width/height the container won't show at all is incorrect. Obviously, if you want to display an empty div with a background image, you will need to set the height and, possibly, width, but then you will see only a part of an image, unless the aspect ratio is exactly the same as of the image itself. – 
-Andrei Volgin
- Nov 11
+
+        <div class="container">
+            <div class="columns is-mobile">
+                <div class="column">
+                    <p class="title">
+                        Dear friends
                     </p>
+                    <div class="box">
+                        <p>
+                            this website has all free content that you can read 
+                            as if you want to there is no login or register 
+                            required unless you want to write comment or create 
+                            your own post to share with another so then you need
+                            to register.
+                        </p>
+                    </div>
+
                 </div>
-                <p class="title">
-                    this is another box
-                </p>
-                <div class="box">
-                    <p>
-After the AuthController.php file has been successfully generated, now please open the file and change all the code to be as above. In this AuthController.php file, we create register, login and logout methods.
 
-Explanation of these methods:
+                <div class="column">
 
-Register. In this method, we add validation for name, email and password. If the POST request data fails to be validated, it will send an error response from the validation. However, if the POST request is successfully validated, the data from the POST request will be stored in the users table and will create a new token, and will send a json response containing details of the data that has been added along with the token that has been successfully created.
-Login. In this method, we add logic to check whether the entered email and password really match one of the data in the users table. If the data fails to be found in the users table, the resulting response will be 401 or Unauthorized. But if the data is found, it will create a new token for that user which will be stored in the personal_access_tokens table.
-Logout. This method will delete the user session by deleting all tokens belonging to that user in the personal_access_token table.
-Step 5: Define Route
-                    </p>
+                    <register-form 
+                        @isUserHasConfirmationCode="afterRegistered"></register-form>
                 </div>
-            </div>
-            <div class="column">
-                <p>this is another column</p>
-                <register-form 
-                    @isUserHasConfirmationCode="afterRegistered"></register-form>
-            </div>
 
+            </div>
         </div>
-
-
         <after-user-has-registered 
             ref="runAfterRegister"></after-user-has-registered>
     </section>

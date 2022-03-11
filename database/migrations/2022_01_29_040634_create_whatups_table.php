@@ -15,7 +15,7 @@ class CreateWhatupsTable extends Migration
     {
         Schema::create('whatups', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->contrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->onDelete("cascade");
             $table->string('wp_title');
             $table->text('wp_body');
             $table->boolean("is_public")->nullable()->default(1);

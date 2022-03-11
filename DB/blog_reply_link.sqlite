@@ -1,0 +1,10 @@
+ 
+/* ========================== INSERT blog link '1' ==================
+ * link reply id '1' to blog id '1' 
+ * on 2022-02-24 07:08:56 am
+ * */
+INSERT INTO `blog_reply`(`blog_id`,`reply_id`) VALUES(
+    '1',
+    '1');
+ 
+ 

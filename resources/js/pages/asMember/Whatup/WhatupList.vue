@@ -70,7 +70,35 @@
         </article>
 
         <!-- pagination START -->
+            <div class="d-flex justify-content-center mt-4 mb-4" v-if="whatup.total != 0">
 
+                <nav class="pagination is-rounded" role="navigation" 
+                    aria-label="pagination">
+                    <a class="pagination-previous is-current">post {{whatup.from}} of
+                        {{whatup.total}}</a>
+                    <a class="pagination-next is-current">
+                        page {{whatup.current_page}}/{{whatup.last_page}}</a>
+
+
+                  <ul class="pagination-list" v-for="ln in whatup.links">
+                    <li v-if="ln.url != null && ln.active == false">
+                      <a class="pagination-link" 
+                      aria-label="Page 1" aria-current="page" v-html="ln.label" 
+                      @click.prevent="$emit('getWhatup',ln.url)"></a>
+                    </li>
+                    <li v-else>
+                      <a class="pagination-link is-current"  v-if="ln.active == true" 
+                      aria-label="" aria-current="page" v-html="ln.label" 
+                      ></a>
+
+                      <a class="pagination-link"  v-else 
+                      aria-label="" aria-current="page" v-html="ln.label" 
+                      ></a>
+                    </li>
+
+                  </ul>
+                </nav>
+            </div>
         <!-- pagination END -->
 
     </div>

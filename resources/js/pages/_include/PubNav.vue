@@ -16,7 +16,16 @@
       <div id="collapse" :class="{ 'is-active': isActive }" class="navbar-menu is-paddingless" >
         <nav class="navbar-end">
           <router-link to="/" class="navbar-item">Home</router-link>
-          <router-link :to="{name:'About'}" class="navbar-item">About</router-link>
+
+          <router-link :to="{name:'PubBlog'}" 
+              class="navbar-item">Blog</router-link>
+
+
+          <router-link :to="{name:'PubCourse'}" 
+              class="navbar-item">Course</router-link>
+
+          <router-link 
+              to="/static-site/about-us" class="navbar-item">About</router-link>
 
           <router-link :to="{name:'LoginPage'}" 
               class="navbar-item">Login</router-link>

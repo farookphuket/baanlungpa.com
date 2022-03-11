@@ -16,13 +16,26 @@ class WhatupController extends Controller
      */
     public function index()
     {
-        //
+        $perpage = request()->perpage;
+        if(Auth::check()):
+            $wp = $this->getMemberWhatup($perpage);
+        else:
+            $wp = Whatup::where("is_public","!=",0)
+                    ->latest()
+                    ->paginate($perpage);
+        endif;
+
+        return response()->json([
+            "whatup" => $wp
+        ]);
     }
 
     public function getWhatup(){
         $wp = "";
+        $perpage = request()->perpage;
+
         if(Auth::check()):
-            $wp = $this->getMemberWhatup();
+            $wp = $this->getMemberWhatup($perpage);
         else:
             $wp = Whatup::where("is_public","!=",0)
                         ->has('user')
@@ -36,14 +49,24 @@ class WhatupController extends Controller
         ]);
     }
 
-    public function getMemberWhatup(){
+    public function getMemberWhatup($perpage = false){
 
-        $wp = Whatup::where("is_public","!=",0)
-                    ->orWhere("user_id",Auth::user()->id)
-                    ->has('user')
-                    ->with('user')
-                    ->orderBy("created_at","DESC")
-                    ->paginate(4);
+        $user = Auth::user();
+
+        if($perpage):
+            (int)$perpage;
+        endif;
+        if($user->is_admin != 0):
+            $wp = Whatup::latest()
+                ->paginate($perpage)
+                ->onEachSide(1);
+                    
+        else:
+            $wp = Whatup::where("is_public","!=",0)
+                        ->orWhere("user_id",Auth::user()->id)
+                        ->orderBy("created_at","DESC")
+                        ->paginate($perpage);
+        endif;
         return $wp;
 
     } 
@@ -176,6 +199,7 @@ class WhatupController extends Controller
     public function destroy(Whatup $whatup)
     {
         $del = Whatup::find($whatup->id);
+        $del->delete();
 
         $msg = "<span class=\"has-text-success has-text-justify 
             has-text-weight-bold is-size-1-mobile\">

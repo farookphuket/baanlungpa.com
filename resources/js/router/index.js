@@ -17,18 +17,42 @@ import ForgotPassword from "../pages/asPublic/ForgotPassword/ForgotPassword.vue"
 import UserResetPassword from "../pages/asPublic/ForgotPassword/UserResetPassword.vue"
 import Visitor from "../pages/asPublic/Visitor.vue"
 
+// course 26 Feb 2022
+import PubCourse from '../pages/asPublic/Course.vue'
+import CourseView from '../pages/asPublic/Course/CourseView.vue'
+
+import BlogView from "../pages/asPublic/BlogView.vue"
+import StaticPage from "../pages/asPublic/StaticPage.vue"
+import PubBlog from "../pages/asPublic/Comment/PubBlog.vue"
+
 // as Admin view 
 import AdminView from "../pages/_include/AdminView.vue" 
 import AdminDashboard from "../pages/asAdmin/Dashboard.vue"
 import AdminUser from "../pages/asAdmin/User.vue"
 
+// blog components
+import AdminBlog from "../pages/asAdmin/Blog/Blog.vue"
+import AdminBlogComment from "../pages/asAdmin/Blog/Comment.vue"
+
+import AdminCategory from "../pages/asAdmin/Category/Category.vue"
+import AdminTag from "../pages/asAdmin/Tag/Tag.vue"
+import AdminComment from "../pages/asAdmin/Comment/Comment.vue"
+import AdminReply from "../pages/asAdmin/Reply/Reply.vue"
+import AdminBlogCategory from "../pages/asAdmin/Blog/CategoryList.vue"
+import AdminAbout from '../pages/asAdmin/About/About.vue'
+
 // as Member 
 import MemberView from "../pages/_include/MemberView.vue"
 import MemberDashboard from "../pages/asMember/Dashboard.vue"
+import MemberBlog from "../pages/asMember/Blog/Blog.vue"
+import MemberBlogCategory from "../pages/asMember/Blog/CategoryList.vue"
 
 import Profile from "../pages/asMember/Profile/Profile.vue"
 
 export const user_id = window.lsDefault.user_id
+export const user_must_verify = window.lsDefault.user_must_verify
+
+//const curPage = window.location.pathname
 
 export const routes = [
     {
@@ -46,6 +70,21 @@ export const routes = [
                 name: 'About',
                 path: '/about',
                 component: About
+            },
+            {
+                name:"PubBlog",
+                path:'/blog-public',
+                component:PubBlog,
+            },
+            {
+                name:"PubCourse",
+                path:'/public-course',
+                component:PubCourse,
+            },
+            {
+                name:"CourseView",
+                path:"/course/:slug",
+                component:CourseView,
             },
 
             {
@@ -100,8 +139,19 @@ export const routes = [
                 path: '/visitor',
                 component: Visitor
             },
+            {
+                name:"BlogView",
+                path:"/:slug",
+                component:BlogView,
+            }
 
         ],
+    },
+    {
+        name:"StaticPage",
+        path:"/static-site/:slug",
+        component:StaticPage,
+
     },
     {
         name:"PageNotFound",
@@ -121,6 +171,10 @@ export const routes = [
             next({name:'PageNotFound'})   
         },
     },
+    {
+        path:'/:pathMatch(course)',
+        redirect:PubCourse,
+    },
 
     {
         name:"Profile",
@@ -130,28 +184,83 @@ export const routes = [
             if(!user_id){
                 next({name:'LoginPage'})
             }else{
-                next()
+                if(user_must_verify){
+                    next({name:'UserMustVerify'})
+                }else{
+                    next()
+                }
             }
         },
     },
 
-    /* ======== Admin route START =============*/
+    /* ======== #Admin route START =============*/
     {
         path:'/admin',
         component:AdminView,
-        redirect:'/admin',
+        redirect:'/dashboard-admin',
         children:[
             {
 
                 name:'AdminDashboard',
-                path:'/admin',
+                path:'/dashboard-admin',
                 component:AdminDashboard,
+            },
+            {
+
+                name:'AdminAbout',
+                path:'/static-about',
+                component:AdminAbout,
             },
             {
 
                 name:'AdminUser',
                 path:'/user',
                 component:AdminUser,
+            },
+            {
+
+                name:'AdminBlog',
+                path:'/manage-blog',
+                component:AdminBlog,
+                
+            },
+            {
+                name:"AdminBlogComment",
+                path:"/blog-comment",
+                component:AdminBlogComment
+            },
+
+            {
+
+                name:'BlogCategory',
+                path:'/category/:category_id',
+                component:AdminBlogCategory
+            },
+
+            {
+
+                name:'AdminComment',
+                path:'/comment',
+                component:AdminComment,
+            },
+            {
+
+                name:'AdminReply',
+                path:'/reply',
+                component:AdminReply,
+            },
+
+            {
+
+                name:'AdminTag',
+                path:'/tag',
+                component:AdminTag,
+            },
+            {
+
+                name:'AdminCategory',
+                path:'/category',
+                component:AdminCategory,
             },
             
         ],
@@ -179,23 +288,37 @@ export const routes = [
         },
     },
 
-    /* ======== Member route START ============ */
+    /* ======== #Member route START ============ */
     {
         path:'/member',
-        component:MemberDashboard,
-        redirect:'/member',
+        component:MemberView,
+        redirect:'/member-dashboard',
         children:[
             {
                 name:"MemberDashboard",
-                path:'/member',
+                path:'/member-dashboard',
                 component:MemberDashboard,
+            },
+            {
+                name:"MemberBlog",
+                path:'/member-blog',
+                component:MemberBlog,
+            },
+            {
+                name:"MemberBlogCategory",
+                path:"/by-category/:category_id",
+                component:MemberBlogCategory
             }
         ],
         beforeEnter:(to,from,next)=>{
             if(!user_id){
                 next({name:'LoginPage'})
             }else{
-                next()
+                if(user_must_verify){
+                    next({name:'UserMustVerify'})
+                }else{
+                    next()
+                }
             }
         },
         

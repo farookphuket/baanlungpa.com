@@ -16,6 +16,7 @@
 <?php
 $data = [
     "user_id" => null,
+    "user_has_login" => false,
     "php_ver" => PHP_VERSION,
     "core_ver" => Illuminate\Foundation\Application::VERSION,
 ];
@@ -23,9 +24,14 @@ $data = [
     @auth
         <?php
         // user id from Auth
-         $data["user_id"] = Auth::user()->id;
+        $data["user_id"] = Auth::user()->id;
+        $data["user_has_login"] = true;
         ?>
-
+        @if(Session::has('user_must_verify'))
+        <?php
+            $data["user_must_verify"] = Session::get("user_must_verify");
+        ?>
+        @endif
     @endauth
 
     @if(Session::has("user_reset_password_token"))

@@ -17,6 +17,10 @@ class Whatup extends Model
         "is_public"
     ];
 
+    protected $with = [
+        "user",
+    ];
+
     public function user(){
         return $this->belongsTo(User::class);
     }

@@ -1,39 +1,50 @@
 <template>
     <section class="body_content">
+        <div class="container">
+            <div class="columns is-mobile">
+                <div class="column">
 
-        <div class="columns is-mobile">
-            <div class="column">
-
-                <div class="card">
-                    <header class="card-header">
-                        <p class="card-header-title">
+                    <div class="mb-4">
+                        <p class="title">
                             {{user.name}}'s profile
                         </p>
-                    </header>
-                    <div class="card-content">
-                        <p class="subtitle">
-                            {{user.email}}
-                        </p>
+                        <div class="box">
+                            <p>this is about {{user.name}}'s info</p>
+                        </div>
                     </div>
 
-                    <footer class="card-footer">
-                        <button class="button is-block is-outlined 
-                            is-rounded is-danger is-uppercase" 
-                            @click.prevent="deleteMyAccount(user_id)">
-                            <font-awesome-icon 
-                                icon="times"></font-awesome-icon>
-                            <span class="ml-2">
-                                delete my account
-                            </span>
-                        </button>
-                    </footer>
+                    <div class="mt-2">
+                        <p class="title has-text-danger">
+                            Danger zone
+                        </p>
+                        <div class="box">
+                            <p>
+                                if you press delete button the system will delete 
+                                every post that you have made and this operation 
+                                cannot be undo so please make your backup or lose it 
+                                forever.
+                            </p>
+                        </div>
+                        <div class="mt-4 mb-4 pt-4 pb-4">
+                            <button class="button is-block is-outlined 
+                                is-rounded is-danger is-uppercase" 
+                                @click.prevent="deleteMyAccount(user_id)">
+                                <font-awesome-icon 
+                                    icon="times"></font-awesome-icon>
+                                <span class="ml-2">
+                                    delete my account
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+
+                    
                 </div>
-                
-            </div>
-            <div class="column">
-                <profile-form :user="user"  
-                    @getUser="getUser($event)" 
-                    @confMyPass="confMyPass($event)"></profile-form>
+                <div class="column">
+                    <profile-form :user="user"  
+                        @getUser="getUser($event)" 
+                        @confMyPass="confMyPass($event)"></profile-form>
+                </div>
             </div>
         </div>
 

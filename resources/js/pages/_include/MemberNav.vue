@@ -1,5 +1,6 @@
 <template>
- <header :class="{ 'is-transformed': !showNavbar }" class="navbar is-fixed-top is-transparent is-spaced" >
+ <header :class="{ 'is-transformed': !showNavbar }" 
+     class="navbar is-fixed-top is-transparent is-spaced" >
     <div class="container">
       <div class="navbar-brand is-family-secondary">
           <router-link :to="{name:'Home'}" class="navbar-item">
@@ -7,16 +8,26 @@
                 <img src="/img/house.png" alt="บ้านลุงป้าดอทคอม สมาชิกเพจ">
               </figure>
         </router-link>
-        <a :aria-expanded="isActive" :class="{ 'is-active': isActive }" role="button" class="navbar-burger" aria-label="menu" data-target="collapse" @click="isActive = !isActive" >
+        <a :aria-expanded="isActive" 
+            :class="{ 'is-active': isActive }" role="button" 
+            class="navbar-burger" aria-label="menu" data-target="collapse" 
+            @click="isActive = !isActive" >
           <span aria-hidden="true" />
           <span aria-hidden="true" />
           <span aria-hidden="true" />
         </a>
       </div>
-      <div id="collapse" :class="{ 'is-active': isActive }" class="navbar-menu is-paddingless" >
-        <nav class="navbar-end">
-            <router-link :to="{name:'MemberDashboard'}" class="navbar-item">Home</router-link>
-          <router-link :to="{name:'About'}" class="navbar-item">About</router-link>
+      <div id="collapse" :class="{ 'is-active': isActive }" 
+          class="navbar-menu is-paddingless" >
+        <nav class="navbar-end is-uppercase">
+            <router-link :to="{name:'MemberDashboard'}" 
+                class="navbar-item">Home</router-link>
+
+            <router-link :to="{name:'MemberBlog'}" 
+                class="navbar-item">Blog</router-link>
+
+            <router-link to="/static-site/about-us" 
+                class="navbar-item">About</router-link>
 
           <router-link :to="{name:'Profile'}" 
               class="navbar-item">Profile</router-link>
@@ -33,12 +44,13 @@
 import throttle from 'lodash/throttle'
 
 export default {
-    name:'PubNav',
+    name:'MemberNav',
   data() {
     return {
-      isActive: false,
-      showNavbar: true,
-      lastScrollPosition: 0
+        isActive: false,
+        showNavbar: true,
+        lastScrollPosition: 0,
+        user_must_verify:false,
     }
   },
   mounted() {
@@ -63,7 +75,13 @@ export default {
       this.showNavbar = currentScrollPosition < this.lastScrollPosition
       this.lastScrollPosition = currentScrollPosition
       setTimeout(this.closeMenu, 250)
-    }
+    },
+      userVerify(){
+          if(this.$cookies.get("user_must_verify") 
+              && this.$cookies.get("user_must_verify") !== false){
+              this.user_must_verify = true
+          }
+      },
   }
 }
 </script>

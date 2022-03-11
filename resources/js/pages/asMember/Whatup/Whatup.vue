@@ -14,7 +14,7 @@
                         <font-awesome-icon icon="plus"></font-awesome-icon>
                     </button>
                     <button class="button is-danger is-outlined" 
-                            @click.prevent="showForm = false"
+                            @click.prevent="closeReload"
                         v-else>
                         <font-awesome-icon icon="times"
                             ></font-awesome-icon>
@@ -26,9 +26,10 @@
         <!-- show form START -->
         <div class="columns is-mobile">
             <div class="column" v-show="showForm">
-                <whatup-form 
+                <whatup-form @openBox="openBox($event)"
                     @getWhatup="getWhatup($event)"
-                    :editId="editId"></whatup-form>
+                    :editId="editId" 
+                    @closeReload="closeReload($event)"></whatup-form>
             </div>
         </div>
         <!-- show form END -->
@@ -37,28 +38,24 @@
             @getWhatup="getWhatup($event)"></whatup-list>
 
         <!-- modal area START -->
-        <div class="modal" :class="{'is-active':isModalShow}">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-                <!-- Any other Bulma elements you want -->
-                <div class="content box">
-                    <div v-html="res_status"></div>
-                </div>
-            </div>
-            <button class="modal-close is-large" aria-label="close" 
-                @click.prevent="isModalShow = ''"></button>
-        </div>
+        <x-box ref="xbox" 
+            :msg="res_status"></x-box>
         <!-- modal area END -->
     </div>
 </template>
 <script>
+
 import WhatupForm from "./WhatupForm.vue"
 import WhatupList from "./WhatupList.vue"
+
+import xBox from "../../_include/BoxModal.vue"
+
 export default{
     name:"Whatup",
     components:{
         WhatupForm,
         WhatupList,
+        xBox,
     },
     data(){return{
         showForm:false,
@@ -96,7 +93,8 @@ export default{
                 axios.delete(url)
                     .then(res=>{
                         this.res_status = res.data.msg
-                        this.isModalShow = 'is-active'
+                        this.openBox({msg:this.res_status,timeout:2500})
+
                         setTimeout(()=>{
                             this.getWhatup()
                             this.clearSet()
@@ -108,6 +106,21 @@ export default{
             this.res_status = ''
             this.editId = 0
             this.isModalShow = ''
+        },
+        openBox({msg,timeout}){
+            this.res_status = msg
+            this.$refs.xbox.showBoxModal()
+
+            if(timeout && timeout !== 0){
+                setTimeout(()=>{
+                    this.clearSet()
+                    this.$refs.xbox.hideBoxModal()
+                },timeout)
+            }
+
+        },
+        closeReload(){
+            location.reload()
         },
     },
 }

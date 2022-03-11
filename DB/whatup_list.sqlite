@@ -1,53 +1,41 @@
- 
+/*
+    ======================== DO NOT DELETE ME =================================
+    ============ THIS IS THE DEFAULT DATA PLEASE DO NOT DELETE ================
+    ===========================================================================
+*/
+
 /* ========================== Backup whatup id 3 ==========================
- * on date 2022-02-03 19:11:13 pm
+ * on date 2007-10-29 19:11:13 pm
  * */
 INSERT INTO `whatups`(`user_id`,`wp_title`,`wp_body`,`is_public`,`created_at`,
 `updated_at`) VALUES(
     '1',
-    'this is my new one',
-    '<p>this is my new one my friend ha ha</p>',
-    '1',
-    '2022-02-03 19:11:13',
-    '2022-02-03 19:11:13');
- 
- 
-/* ========================== Backup whatup id 2 ==========================
- * on date 2022-02-04 09:10:21 am
- * */
-INSERT INTO `whatups`(`user_id`,`wp_title`,`wp_body`,`is_public`,`created_at`,
-`updated_at`) VALUES(
-    '2',
-    'this is my post',
-    '<p>tis is the post 1</p>',
-    '1',
-    '2022-02-04 09:10:21',
-    '2022-02-04 09:10:21');
-  
-/* ========================== update whatup id 2 ==========================
- * on date 2022-02-04 09:40:36 am
- * */
-UPDATE `whatups` SET wp_title='to use this script',
-wp_body='
-<div class="content">
+    'setup your project in different directory name',
+    '
+    <p class="title has-text-centered has-text-danger">
+        I am your backup do not delete me.
+    </p>
     <p>
+
 if your project folder is not "blp.proj" please make sure that you edit the 
 file  "app/config/sanctum.php" you may have your project folder into the list 
 of "stateful" just to prevent from having a login problem "cannot set token"
-    </p>
-</div>
-<p>this is my update ha ah </p>',
-is_public='1',
-updated_at='2022-02-04 09:40:36' WHERE id='2';  
-/* ========================== Backup whatup id 3 ==========================
- * on date 2022-02-04 10:10:53 am
- * */
-INSERT INTO `whatups`(`user_id`,`wp_title`,`wp_body`,`is_public`,`created_at`,
-`updated_at`) VALUES(
-    '2',
-    'thid id anothe',
-    '<p>thi sin sjdjs another</p>',
+    
+    </p> 
+
+    ',
     '1',
-    '2022-02-04 10:10:53',
-    '2022-02-04 10:10:53');
+    '2007-10-29 19:11:13',
+    '2007-10-29 19:11:13');
  
+ 
+/*
+    ======================== DO NOT DELETE ME =================================
+    ============ THIS IS THE DEFAULT DATA PLEASE DO NOT DELETE ================
+    ===========================================================================
+*/
+
+
+
+
+

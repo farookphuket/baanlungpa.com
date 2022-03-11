@@ -181,6 +181,7 @@ class LoginController extends Controller
         $err = false;
         $url = "";
         $msg = "";
+        $user_must_verify = true;
         $email = request()->email;
         $token = '';
         $user_enable = null;
@@ -191,10 +192,19 @@ class LoginController extends Controller
                 Error! no account found!</span>";
             $url = '/login';
         else:
-            $user_url = $this->getUserUrl();
-            $url = $user_url; 
+            if($this->isUserVerified() && 
+                $this->isUserVerified() != null):
+                $user_must_verify = false;
+                Session::put("user_must_verify",false);
+
+            else:
+                Session::put("user_must_verify",true);
+            endif;
+
             $token = Auth::user()->createToken('auth_token')->plainTextToken;
             $user_enable = Auth::user();
+            $user_url = $this->getUserUrl();
+            $url = $user_url; 
             $msg = "<span class=\"tag is-medium is-success\">
                 Welcome {$email}</span>";
         endif;
@@ -204,6 +214,7 @@ class LoginController extends Controller
             "msg" => $msg,
             "url" => $url,
             "error" => $err,
+            "user_must_verify" => $user_must_verify,
             "token_type" => "Bearer",
             "access_token" => $token,
             "user_enable" => $user_enable
@@ -215,20 +226,33 @@ class LoginController extends Controller
         $user = User::find(Auth::user()->id);
 
         $url = '';
+        $root_user = false;
+        $member = false;
 
-        if($user->email_verified_at == null || 
-            $user->email_verified_at == NULL || 
-        $user->email_verified_at == ''):
+        if(!$this->isUserVerified() || 
+        $this->isUserVerified() == null):
             $url = '/user-must-verify';
         else:
+            
             if($user->is_admin != 0):
                 $url = '/admin';
+            else:
+                $url = '/member';
             endif;
-            $url = '/member';
         endif;
+
+
 
         return $url;
 
+    }
+
+    public function isUserVerified(){
+        $user = Auth::user();
+        $get = User::where("email_verified_at","!=",null)
+                    ->where("id",$user->id)
+                    ->first();
+        return $get;
     }
 
 
@@ -263,6 +287,8 @@ class LoginController extends Controller
      */
     public function update(User $user)
     {
+        //this method will reset the user password from
+        // call from forgot password
 
         // get the token 
         $token = Session::get("user_reset_password_token");

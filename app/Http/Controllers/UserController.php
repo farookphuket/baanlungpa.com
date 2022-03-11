@@ -35,8 +35,8 @@ class UserController extends Controller
 
     public function getUser(){
         $user = User::orderBy("created_at","DESC")
-                    ->with('role')
-                    ->paginate(4);
+                    ->paginate(4)
+                    ->onEachSide(1);
 
         $role = Role::all();
 

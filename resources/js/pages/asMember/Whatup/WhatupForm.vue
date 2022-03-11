@@ -2,11 +2,31 @@
     <div>
         <div class="container">
             <form action="" class="pb-6 mb-6">
-                <div class="field">
-                    <div class="control">
-                        <input v-model="wForm.wp_title" class="input" type="text" 
-                        ref="title"
-                        name="" placeholder="Title...">
+                <div class="mb-4 pb-6">
+                    <div class="field">
+                        <div class="control has-icons-right">
+                            <input v-model="wForm.wp_title" class="input" type="text" 
+                            ref="title"
+                            name="" placeholder="Title...">
+
+                            <span class="icon is-right is-small ">
+                                {{wForm.wp_title.length}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field is-pulled-right" 
+                         v-if="wForm.wp_title.length >= 81">
+                        <div>
+                            <span class="has-text-weight-bold 
+                                has-text-danger">
+                                Error! title is too long!
+                            </span>
+                            <span class="tag is-medium mr-2 has-text-weight-bold 
+                                has-text-danger is-rounded">
+                                {{wForm.wp_title.length}}
+                            </span>
+                        </div>
+
                     </div>
                 </div>
 
@@ -36,7 +56,7 @@
                 </div>
                 <div class="mb-6 mt-6 pt-4 pb-4">
                     <div class="columns is-mobile">
-                        <div class="column">
+                        <div class="column ">
                             <div v-html="res_status"></div>
                         </div>
                         <div class="column">
@@ -54,8 +74,28 @@
                                 <button class="button is-primary is-rounded 
                                     is-outlined" 
                                     @click.prevent="saveWhatup(editId)">
-                                    <font-awesome-icon icon="check">
-                                    </font-awesome-icon>
+
+                                    <span class="mr-2">
+                                        <font-awesome-icon icon="check">
+                                        </font-awesome-icon>
+                                    </span>
+                                    <span class="mr-2 ml-2" 
+                                        v-if="editId !== 0">
+                                        Update
+                                    </span>
+                                    <span class="mr-2 ml-2" 
+                                        v-else>
+                                        Create
+                                    </span>
+                                </button>
+                                <button class="button is-danger is-outlined 
+                                    is-rounded ml-2" 
+                                    @click.prevent="$emit('closeReload')">
+                                    <span class="mr-2">
+                                        <font-awesome-icon 
+                                            icon="times"></font-awesome-icon>
+                                    </span>
+                                    <span>Cancel</span>
                                 </button>
                             </div>
                         </div>
@@ -99,7 +139,7 @@ export default{
                 axios.get(url)
                     .then(res=>{
                         let rData = res.data.whatup
-                        console.log(res.data.whatup)
+//                        console.log(res.data.whatup)
                         if(rData.is_public != 0) this.wForm.is_public = true
                         this.wForm.wp_title = rData.wp_title
                         this.wForm.wp_body = rData.wp_body
@@ -120,6 +160,7 @@ export default{
             axios.post(url,fData)
                 .then(res=>{
                     this.res_status = res.data.msg
+                    this.$emit('openBox',{msg:this.res_status,timeout:2500})
                     setTimeout(()=>{
                         this.res_status = ''
                         this.$emit('getWhatup')
@@ -127,9 +168,12 @@ export default{
                     },2500)
                 })
                 .catch(err=>{
-                    this.res_status = `<span class="tag is-medium is-danger">
+                    this.res_status = `<span class="
+                    has-text-weight-bold has-text-danger
+                    ">
                     ${Object.values(err.response.data.errors).join()}
                         </span>`
+                    this.$emit('openBox',{msg:this.res_status,timeout:3500})
                 })
         },
         copyMe(){

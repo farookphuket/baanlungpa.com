@@ -44,43 +44,23 @@ INSERT INTO `users`(`name`,`email`,`password`,`email_verified_at`,`is_admin`,
     '2009-10-29 02:30:29',
     '2009-10-29 02:36:17');
 
+
+INSERT INTO `users`(`name`,`email`,`password`,`email_verified_at`,`is_admin`,
+`created_at`,`updated_at`)VALUES(
+    'moddang',
+    'mod@me.me',
+    '$2y$10$iKi.yWrpeYupRyyC0IpcZeSevb0w7sDXFr6eEN0NFlNnvI3tml4A2',
+    '2009-10-29 02:36:17',
+    '0',
+    '2007-10-29 02:30:29',
+    '2007-10-29 02:36:17');
+
+
+
+
 /* ============================================================================
  *                  END OF INSERT COMMAND FOR user 
  * ============================================================================
  * */
 
   
-/* =========================== Insert new id 7 ======================
- * on 2022-02-05 14:14:20 pm START 
- * */
-INSERT INTO `users`(`name`,`email`,`password`,`email_verified_at`,`is_admin`,
-`created_at`,`updated_at`)VALUES(
-    'mint',
-    'mint@me.me',
-    '$2y$10$HAuY.ZvECGSIKuBn.t3jz.trLnQCUvPyDZWCGIlUX3TSoBRP98abC',
-    '2022-02-05 14:14:20',
-    '0',
-    '2022-02-05 10:59:15',
-    '2022-02-05 14:14:20');
-/* ============================================================================
- *                  END OF INSERT COMMAND FOR user id 7
- * ============================================================================
- * */
-   
-/* =========================== Insert new id 9 ======================
- * on 2022-02-05 16:55:00 pm START 
- * */
-INSERT INTO `users`(`name`,`email`,`password`,`email_verified_at`,`is_admin`,
-`created_at`,`updated_at`)VALUES(
-    'ffo2',
-    'firefrook@gmail.com',
-    '$2y$10$iEiWwUYzvOC80V5asvBWNe8R6ExxIRjmBkcEn0LpkZFjpULXsU/0K',
-    '2022-02-05 16:55:00',
-    '0',
-    '2022-02-05 16:53:22',
-    '2022-02-05 16:55:00');
-/* ============================================================================
- *                  END OF INSERT COMMAND FOR user id 9
- * ============================================================================
- * */
- 
