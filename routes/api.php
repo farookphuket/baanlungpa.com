@@ -9,6 +9,11 @@ use App\Http\Controllers\VisitorController as Visit;
 use App\Http\Controllers\UserController as User;
 use App\Http\Controllers\ProfileController as Profile;
 use App\Http\Controllers\CategoryController as Cat;
+
+// course 18 Mar 2022
+use App\Http\Controllers\CourseController as Course;
+
+
 use App\Http\Controllers\CommentController as Comment;
 use App\Http\Controllers\ReplyController as Reply;
 use App\Http\Controllers\BlogController as Blog;
@@ -71,6 +76,11 @@ Route::get("/gettag",[Tag::class,"index"])
 // get whatup as public
 Route::get('/getwhatup',[Whatup::class,'getWhatup'])
     ->name('getWhatup');
+
+// course last add 18 Mar 2022
+Route::get('/free-course',[Course::class,'getFreeCourse'])
+    ->name('getFreeCourse');
+
 
 
 // register 

@@ -25,14 +25,7 @@ class CreateClassRoomsTable extends Migration
         });
 
 
-        Schema::create('class_room_student', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId("student_id")->constrained()
-                ->onDelete("cascade");
 
-            $table->foreignId("class_room_id")->constrained()
-                ->onDelete("cascade");
-        });
     }
 
     /**
@@ -43,6 +36,5 @@ class CreateClassRoomsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('class_rooms');
-        Schema::dropIfExists('class_room_student');
     }
 }

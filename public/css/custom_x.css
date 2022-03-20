@@ -119,5 +119,9 @@
     }
 
 
+    #app section.body_content div.columns.is-mobile > .column.is-4 {
+        flex: none;
+        width: 100%;
+    }
     
 }

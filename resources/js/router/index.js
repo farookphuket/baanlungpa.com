@@ -78,7 +78,7 @@ export const routes = [
             },
             {
                 name:"PubCourse",
-                path:'/public-course',
+                path:'/free-course',
                 component:PubCourse,
             },
             {

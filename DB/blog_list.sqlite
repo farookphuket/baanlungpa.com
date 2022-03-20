@@ -181,9 +181,13 @@ INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
         ปั่นจักรยานยังไม่ทันได้เหงื่อเลย เด็กติสหนีกลับเสียงั้น
     </p>
     <div class="video-container">
-        <iframe src="https://archive.org/embed/trip26-feb-2022_with_jang-and-family" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""></iframe>
+        <iframe src="https://archive.org/embed/sakaew-with-pa-26-feb-2022" 
+        width="640" height="480" frameborder="0" webkitallowfullscreen="true" 
+        mozallowfullscreen="true" allowfullscreen></iframe>
     </div>
+
     <p class="pt-2 has-text-centered">ดูวิดิโอ</p>
+
     <p class="pt-2">
         แล้วเจอกันใหม่นะ
     </p>
@@ -205,7 +209,7 @@ INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
     '<div class="columns is-mobile">
     <div class="column">
         <figure class="justify-content-center">
-            <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg">
+            <img src="https://i.ibb.co/ckf8Y4y/course98bath-cover-1.jpg">
         </figure>
         <p class="pt-2 has-text-centered">
             เรียนออนไลน์รุ่นที่ 208
@@ -228,7 +232,8 @@ INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
     </div>
 </div>',
     '1',
-    '<div class="content">
+    '
+<div class="content">
 
     <div class="box mb-4">
         <p class="title has-text-info">
@@ -242,8 +247,63 @@ INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
     <div class="video-container">
         <iframe src="https://archive.org/embed/thai-course-online-98-thaibath-208-10-mar-2022" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""></iframe>
     </div>
+<div class="mt-2 pb-2">
+<div class="video-container">
+<iframe src="https://archive.org/embed/thai-course-class-208-98thaibath-day2" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+</div>
+<p class="has-text-centered pt-2">
+เรียนขายของออนไลน์วันที่ 2 รุ่น 208 (เสียงมันค่อยมากๆ ต้องขออภัย)
+</p>
+</div>
+
+<!-- day 2 START -->
+<div class="mt-2 pb-2">
+<div class="video-container">
+<iframe src="https://archive.org/embed/thai-course-class-208-98thaibath-day2" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+</div>
+<p class="has-text-centered pt-2">
+เรียนขายของออนไลน์วันที่ 2 รุ่น 208 (เสียงมันค่อยมากๆ ต้องขออภัย)
+</p>
+</div>
+<!-- day 2 END -->
+<!-- day 3 START -->
+<div class="mt-2 pb-2">
+<div class="video-container">
+
+<iframe src="https://archive.org/embed/thai-course-online-class-208-day-3" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+
+</div>
+<p class="has-text-centered pt-2">
+เรียนขายของออนไลน์วันที่ 3 รุ่น 208
+</p>
+</div>
+<!-- day 3 END -->
+
+<!-- sale dream START -->
+<div class="mt-2 pb-2">
+<div class="video-container">
+
+<iframe src="https://archive.org/embed/thai-online-course-class-208-day-dream" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+
+
+</div>
+<p class="has-text-centered pt-2">
+เรียนขายของออนไลน์ รุ่น 208
+</p>
+</div>
+<!-- day dream  END -->
+<p>
+ลองฟังดูดีๆ นะครับ 
+<span class="has-text-weight-bold">
+ไม่มีธุรกิจอะไรในโลกนี้ที่ลงทุน 0 บาท
+</span> 
+น่าเสียดายครับ ผมไม่มีเงิน ถ้ามี 4 แสนนี่ ผมลงหมดตัวเลย แต่ตอนนี้ผมขออยู่นิ่งๆ ก่อนดีกว่าครับ เพราะว่าผมไม่มีเงินจริงๆ แต่ถ้าใครพอมองเห็นลู่ทางก็เชิญนะครับ 
+</p>
+<p>
+มันฟังแปลกๆ นะ สะดุดใจกันบ้างมั้ย ที่เค้าบอกว่า บ้านเค้ากำลังจะโดนยึด แล้วเค้าเอาเงินมาจากไหนตั้ง 3 แสนมาลงทุน หรือ เค้าจนมากๆ ขายของวันนึง 300 500 แล้วต้องเก็บเงินกี่ปีถึงจะมีเงินมาลงทุนตั้ง 3 แสน แต่ยังไงก็ช่าง มันน่าจะไม่ใช่เรื่องขายฝันหรอกมั้ง เพราะว่าคงไม่มีใครเช่าเฟอรารี่มาขับเล่นๆ ถ่ายวิดิโอ 5 นาที 10 นาทีหรอกเนอะ
+</p>
     <p class="pt-2 has-text-centered">
-        เรียนขายของออนไลน์ คอร์ส 98 บาท รุ่นที่ 208 วันที่ 10 มีนาคม 2565
+        เรียนขายของออนไลน์ คอร์ส 98 บาท รุ่นที่ 208 วันที่ 10 มีนาคม 2565 ฟังเพลินดีนะครับ ก็ลองฟังๆ ดู
     </p>
     <p class="mt-4">
         หากท่านต้องการเขียน คอมเม้น กรุณา 
@@ -252,7 +312,9 @@ INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
 </a>
         ก่อนนะครับ
     </p>
-</div>',
+</div>
+
+',
     '2022-03-11 16:40:05',
     '2022-03-11 16:40:05');
  

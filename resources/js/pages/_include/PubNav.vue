@@ -21,8 +21,12 @@
               class="navbar-item">Blog</router-link>
 
 
-          <router-link :to="{name:'PubCourse'}" 
-              class="navbar-item">Course</router-link>
+
+
+          <a class="navbar-item" 
+              href="https://course.baanlungpa.com/free-course">
+              Course
+          </a>
 
           <router-link 
               to="/static-site/about-us" class="navbar-item">About</router-link>

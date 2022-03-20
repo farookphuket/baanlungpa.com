@@ -17,20 +17,12 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->foreignId("user_id")->constrained()
                     ->onDelete("cascade");
-            $table->boolean("is_study_now")->default(0);
+            $table->foreignId("class_room_id")->constrained()
+                    ->onDelete("cascade");
+
             $table->timestamp("studied_at");
             $table->timestamp("successed_at")->nullable();
             $table->timestamps();
-        });
-
-        Schema::create('course_student', function (Blueprint $table) {
-            $table->id();
-
-            $table->foreignId("course_id")->constrained()
-                                          ->onDelete("cascade");
-            
-            $table->foreignId("student_id")->constrained()
-                                          ->onDelete("cascade");
         });
     }
 
@@ -42,6 +34,5 @@ class CreateStudentsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('students');
-        Schema::dropIfExists('course_student');
     }
 }

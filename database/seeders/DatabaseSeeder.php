@@ -18,17 +18,17 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         $this->call([
-            UserSeeder::class,
-            RoleSeeder::class,
-            VisitorSeeder::class,
-            WhatupSeeder::class,
+             UserSeeder::class,
+             RoleSeeder::class,
+             VisitorSeeder::class,
+             WhatupSeeder::class,
 
-            BlogSeeder::class,
-            CategorySeeder::class,
-            TagSeeder::class,
-            ReadSeeder::class,
-            CommentSeeder::class,
-            ReplySeeder::class,
+             BlogSeeder::class,
+             CategorySeeder::class,
+             TagSeeder::class,
+             ReadSeeder::class,
+             CommentSeeder::class,
+             ReplySeeder::class,
         ]);
 
         // create pip table
@@ -88,6 +88,7 @@ class DatabaseSeeder extends Seeder
             $role_file = 'DB/reply_comment_link.sqlite';
             DB::unprepared(file_get_contents($role_file));
             $this->command->info("Reply link to Comment has been Created!!");
+
 
         }
 }

@@ -21,6 +21,7 @@ class CreateCoursesTable extends Migration
             $table->integer("course_id");
             $table->string("course_credit");
             $table->string("course_name");
+            $table->string("course_cover");
             $table->text("course_excerpt");
             $table->text("course_body");
             $table->integer("course_hours");
@@ -29,6 +30,16 @@ class CreateCoursesTable extends Migration
             $table->timestamp("released_at");
             $table->timestamps();
         });
+
+        Schema::create('class_room_course', function (Blueprint $table) {
+            $table->id(); 
+            $table->foreignId("class_room_id")->constrained()
+                                             ->onDelete("cascade");
+
+            $table->foreignId("course_id")->constrained()
+                                             ->onDelete("cascade");
+        });
+
     }
 
     /**
@@ -39,5 +50,6 @@ class CreateCoursesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('courses');
+        Schema::dropIfExists('class_room_course');
     }
 }

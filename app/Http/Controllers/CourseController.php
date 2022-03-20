@@ -17,6 +17,19 @@ class CourseController extends Controller
         //
     }
 
+    // only non login will get this route
+    public function getFreeCourse(){
+        $perpage = request()->perpage;
+        // return free & public course
+        $free_pub_course = Course::where("course_is_public","!=",0)
+            ->where("course_is_free","!=",0)
+            ->latest()
+            ->paginate($perpage);
+
+        return response()->json([
+            "course" => $free_pub_course
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *
