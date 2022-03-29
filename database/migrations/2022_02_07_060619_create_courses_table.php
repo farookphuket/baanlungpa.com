@@ -18,16 +18,15 @@ class CreateCoursesTable extends Migration
             $table->foreignId("user_id")->constrained()->onDelete("cascade");
             $table->string("course_year");
             $table->string("course_term");
-            $table->integer("course_id");
             $table->string("course_credit");
             $table->string("course_name");
-            $table->string("course_cover");
+            $table->string("course_cover")->nullable();
             $table->text("course_excerpt");
             $table->text("course_body");
             $table->integer("course_hours");
             $table->boolean("course_is_free");
             $table->boolean("course_is_public");
-            $table->timestamp("released_at");
+            $table->timestamp("released_at")->nullable();
             $table->timestamps();
         });
 

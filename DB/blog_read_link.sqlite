@@ -84,4 +84,31 @@ INSERT INTO `blog_read`(`blog_id`,`read_id`,`ip`,`readed_at`)VALUES(
 '9',
 '223.24.169.108',
 '2022-03-17 05:24:08');
+  
+/* ================ created link the read id '10' =============
+ * to blog_id '5' on 2022-03-28 09:12:02 am
+ * */
+INSERT INTO `blog_read`(`blog_id`,`read_id`,`ip`,`readed_at`)VALUES(
+'5',
+'10',
+'223.24.153.88',
+'2022-03-28 09:12:02');
+  
+/* ================ created link the read id '11' =============
+ * to blog_id '5' on 2022-03-29 08:50:36 am
+ * */
+INSERT INTO `blog_read`(`blog_id`,`read_id`,`ip`,`readed_at`)VALUES(
+'5',
+'11',
+'49.237.9.210',
+'2022-03-29 08:50:36');
+  
+/* ================ created link the read id '12' =============
+ * to blog_id '5' on 2022-03-29 18:10:19 pm
+ * */
+INSERT INTO `blog_read`(`blog_id`,`read_id`,`ip`,`readed_at`)VALUES(
+'5',
+'12',
+'223.24.165.228',
+'2022-03-29 18:10:19');
  

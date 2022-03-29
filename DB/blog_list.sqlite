@@ -318,3 +318,61 @@ INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
     '2022-03-11 16:40:05',
     '2022-03-11 16:40:05');
  
+ 
+/* ======================= insert Blog id 5 ========================
+ * on 2022-03-28 09:05:32 am
+ *
+ * */
+INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
+`bl_is_public`,`bl_body`,`created_at`,`updated_at`) VALUES(
+    '4',
+    'koko var at koh samed on 26-27 mar 2022',
+    'koko-var-at-koh-samed-on-26-27-mar-2022',
+    '<div class="columns is-mobile">
+    <div class="column">
+        <figure class="justify-content-center">
+            <img src="https://i.ibb.co/0JVXtzk/IMG-20220327-112034.jpg">
+        </figure>
+        <p class="pt-2 has-text-centered">
+            โกโก้ว่า ชุด เปิดซิง
+        </p>
+    </div>
+    <div class="column">
+        <p class="title">
+            ที่ระลึกจากวันวาน และ โกโก้วา</p>
+        <p class="mb-4">
+            ไปเที่ยวกันมั้ย จะไปเกาะสเม็ดต่อให้ไปแล้วยังไม่เสร็จ แต่รับรองว่าเด็ดไม่หยอกเลยไง</p>
+    </div>
+</div>',
+    '1',
+    '<div class="content mt-4">
+    <p class="title">
+        ดูรูปถ่ายจากมือถือ
+    </p>
+    <p class="pt-2 pb-4">
+        คลิกที่รูป เพื่อดูรูปจากอัลบั้มใน กูเกิ้ล โฟโต้(google photo)
+    </p>
+    <div class="content mb-4">
+        <a href="https://photos.app.goo.gl/wxVJztD3YGuPLg356" target="_blank" class="image">
+            <img src="https://i.ibb.co/0JVXtzk/IMG-20220327-112034.jpg">
+        </a>
+    </div>
+
+    <p class="title mt-4">
+        ดูวิดิโอ แบบไม่มีเสียง
+    </p>
+    <p class="mb-4 pt-2">
+        วิดิโอนี้อยู่แม้ว่าจะใน youtube แต่ก็จะไม่สามารถเปิดดูได้หากว่าไม่มีลิ้งค์ เพราะเป้นลิ้งค์แบบ 
+        "unlist" ซึ่งจะไม่แสดงใน youtube แม้ว่า "user" จะเป็น "ผู้ติดตาม(follower)" 
+        ก็จะไม่สามารถเห็นวิดิโอนี้ใน youtube ได้เว้นแต่ว่าจะได้รับลิ้งค์จากผู้โพส  
+    </p>
+    <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Fe-ZykSPBlw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    </div>
+    <p class="has-text-centered pt-2 mb-4 has-text-weight-bold">
+        วิดิโอไม่ค่อยมีเสียงนะครับ เพราะว่าอัดด้วยกล้องใต้น้ำไม่ได้ถอดเคส ในยูทูปใส่เพลงไม่ได้ เพราะจะโดนแบนลิขสิทธิ์
+    </p>
+</div>',
+    '2022-03-28 09:05:32',
+    '2022-03-28 09:05:32');
+ 

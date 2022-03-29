@@ -3,7 +3,8 @@
         <div class="container">
             <blog-list :blogs="blogs" 
                 :isNoBlog="isNoBlog" 
-                @openBlog="openBlog($event)"></blog-list>
+                @openBlog="openBlog($event)" 
+                @getBlog="getBlog($event)" ></blog-list>
         </div>
     </section>
 </template>
@@ -40,7 +41,7 @@ export default{
                         this.isNoBlog = true
                     }
                     this.blogs = blog_list
-                    document.title = `public blog`
+                    document.title = `public blog,write your own today`
 
             })
         },

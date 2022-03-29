@@ -41,9 +41,12 @@ INSERT INTO `blog_category`(`blog_id`,`category_id`) VALUES('3',
 INSERT INTO `blog_category`(`blog_id`,`category_id`) VALUES('4',
 '4');
   
-/* ================= INSERT command for blog id 4 
- * on 2022-03-11 16:40:05 pm
+  
+
+/* ================= INSERT command for blog id 5 
+ * on 2022-03-28 09:05:32 am
  * */
-INSERT INTO `blog_category`(`blog_id`,`category_id`) VALUES('4',
-'4');
+INSERT INTO `blog_category`(`blog_id`,`category_id`) VALUES('5',
+'5');
+  
  

@@ -139,6 +139,7 @@ export default {
             axios.get(url)
                 .then(res=>{
                     this.whatup = res.data.whatup
+                    document.title = "บ้านลุงป้าดอทคอม take a break"
                 })
         },
     },

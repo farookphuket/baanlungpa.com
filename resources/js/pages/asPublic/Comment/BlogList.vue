@@ -66,6 +66,33 @@
             </div>
             <!-- show user,read,create END -->
         </article>
+
+        <!-- show pagination START -->
+        <div class="mt-2 mb-4">
+            <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
+                <a class="pagination-previous is-current">All post(s) {{blogs.total}}</a>
+                <a class="pagination-next is-current">page {{blogs.current_page}}</a>
+              <ul class="pagination-list" v-for="ln in blogs.links">
+                <li v-if="ln.url != null && ln.active == false">
+                  <a class="pagination-link" 
+                  aria-label="Page 1" aria-current="page" v-html="ln.label" 
+                  @click.prevent="$emit('getBlog',ln.url)"></a>
+                </li>
+                <li v-else>
+                  <a class="pagination-link is-current"  v-if="ln.active == true" 
+                  aria-label="" aria-current="page" v-html="ln.label" 
+                  ></a>
+
+                  <a class="pagination-link"  v-else 
+                  aria-label="" aria-current="page" v-html="ln.label" 
+                  ></a>
+                </li>
+
+              </ul>
+            </nav>
+        </div>
+        <!-- show pagination END -->
+
     </div>
 </template>
 <script>
