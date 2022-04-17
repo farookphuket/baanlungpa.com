@@ -67,6 +67,7 @@ Route::get('/about-us',[DefaultP::class,"about"])
 Route::get("/blog",[Blog::class,"index"]);
 Route::get("/blog/{id:slug}",[Blog::class,"show"]);
 
+
 Route::get("/getcategory",[Cat::class,"getCategory"])
         ->name("getCategory");
 

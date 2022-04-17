@@ -43,7 +43,7 @@ class BlogController extends Controller
         else:
             $query = Blog::latest()
                             ->where("bl_is_public","!=",0)
-                            ->paginate(4);
+                            ->paginate($perpage);
         endif;
         return response()->json([
             "blog" => $query,
@@ -73,21 +73,20 @@ class BlogController extends Controller
         return $query;
     }
 
-    public function getBlogByCategory(){
-
+    public function getBlogByCategory(Category $category){
 
         $cat_id = request()->cat_id;
         $perpage = request()->perpage;
 
-        $blog = Category::find($cat_id)
-                        ->blog()
-                        ->paginate($perpage);
+        $get = Category::where("cat_slug",$cat_id)
+                            ->first();
 
+        $blog = $get->blog()
+                    ->paginate($perpage);
 
-
-            return response()->json([
-                "blog" => $blog
-            ]);
+        return response()->json([
+            "blog" => $blog
+        ]);
 
     }
 
@@ -111,8 +110,8 @@ class BlogController extends Controller
     {
         $valid = request()->validate([
             "bl_title" => ["required","max:80","unique:blogs,bl_title"],
-            "bl_excerpt" => ["required","min:50","max:1000"],
-            "bl_body" => ["required","min:50","max:6000"],
+            "bl_excerpt" => ["required","min:50","max:400"],
+            "bl_body" => ["required","min:50"],
         ],
         [
             "bl_excerpt.required" => "Error! the Excerpt is required!",
@@ -120,7 +119,6 @@ class BlogController extends Controller
             "bl_excerpt.max" => "Error! the Excerpt are too long!",
             "bl_body.required" => "Error! the Content cannot be empty!",
             "bl_body.min" => "Error! the Content is too short!",
-            "bl_body.max" => "Error! the Content are too Long!",
         ]);
 
         // tags 
@@ -129,8 +127,14 @@ class BlogController extends Controller
         // so no need to re-create 
         // prepare data for blog
         $public = !request()->bl_is_public?0:1;
+
+        // cover of this post
+        $cover = $this->makeBlogCover();
+
+        // blog data
         $blog_data = [
             "user_id" => Auth::user()->id,
+            "bl_cover" => $cover,
             "bl_title" => xx_clean(request()->bl_title),
             "bl_excerpt" => xx_clean(request()->bl_excerpt),
             "bl_body" => xx_clean(request()->bl_body),
@@ -172,6 +176,82 @@ Success : your blog has been created
         ]);
     }
 
+    /* 
+     * if user has upload cover file
+     * */
+    public function makeBlogCover($blog_id=false){
+        // default cover file
+        $file_name = '/img/placeholders/1280x960.png';
+
+        // user paste image url value
+        $img_url = request()->bl_cover_url;
+
+        // set the folder for upload file
+        $upload_to_folder = public_path("user_upload_file/Blog");
+
+        // old image 
+        $old_image = '';
+
+        if($blog_id):
+            // on edit 
+            $get = Blog::find($blog_id);
+            $old_image = $get->bl_cover;
+            $file_name = $old_image;
+
+            // user choose file
+            if(request()->hasFile('bl_cover_upload')):
+                $new_name = Auth::user()->email."_";
+                $new_name .=  date("Y-m-d")."_"; 
+                $new_name .= request()->file('bl_cover_upload')
+                                      ->getClientOriginalName();
+
+                // move upload file to upload folder 
+                request()->file('bl_cover_upload')
+                         ->move($upload_to_folder,$new_name);
+
+                // set upload file name 
+                $file_name = "/user_upload_file/Blog/".$new_name;
+
+                // delete the old file 
+                unlink(public_path($old_image));
+            endif;
+
+
+            // on image url
+            if(filter_var($img_url,FILTER_VALIDATE_URL)):
+                $file_name = $img_url;
+            endif;
+
+        else:
+            // on create 
+            
+            // user choose file
+            if(request()->hasFile('bl_cover_upload')):
+                $new_name = Auth::user()->email."_";
+                $new_name .=  date("Y-m-d")."_"; 
+                $new_name .= request()->file('bl_cover_upload')
+                                      ->getClientOriginalName();
+
+                // move upload file to upload folder 
+                request()->file('bl_cover_upload')
+                         ->move($upload_to_folder,$new_name);
+
+                // set upload file name 
+                $file_name = "/user_upload_file/Blog/".$new_name;
+
+            endif;
+
+
+            // on image url
+            if(filter_var($img_url,FILTER_VALIDATE_URL)):
+                $file_name = $img_url;
+            endif;
+        endif;
+
+        return $file_name;
+    }
+
+
     /**
      * Display the specified resource.
      *
@@ -188,9 +268,11 @@ Success : your blog has been created
         // set read
         Read::isBlogHasRead($blog->id);
 
+        $meta_title = $blog->bl_title;
 
         return response()->json([
             "blog" => $blog,
+            "meta_title" => $meta_title,
         ]);
     }
 
@@ -227,7 +309,7 @@ Success : your blog has been created
 
         $valid = request()->validate([
             "bl_title" => ["required","max:80","unique:blogs,bl_title,".$bo->id],
-            "bl_excerpt" => ["required","min:50","max:1000"],
+            "bl_excerpt" => ["required","min:50","max:400"],
             "bl_body" => ["required","min:50"],
         ],
         [
@@ -237,25 +319,28 @@ Success : your blog has been created
             "bl_excerpt.max" => "Error! the Excerpt are too long!",
             "bl_body.required" => "Error! the Content cannot be empty!",
             "bl_body.min" => "Error! the Content is too short!",
-            "bl_body.max" => "Error! the Content are too Long!",
         ]);
 
         // tags 
         $tags = request()->tag;
         // user has create his tag 
 
+        // cover 
+        $cover = $this->makeBlogCover($bo->id);
+
         // so no need to re-create 
         // prepare data for blog
         $public = !request()->bl_is_public?0:1;
         $blog_data = [
             "bl_title" => xx_clean(request()->bl_title),
+            "bl_cover" => $cover,
             "bl_excerpt" => xx_clean(request()->bl_excerpt),
             "bl_body" => xx_clean(request()->bl_body),
             "bl_is_public" => $public,
             "bl_slug" => rtrim(request()->bl_slug,"-")
         ];
 
-        // create blog 
+        // update blog 
         Blog::where("id",$blog->id)
             ->update($blog_data);
 

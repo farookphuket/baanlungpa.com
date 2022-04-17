@@ -42,11 +42,23 @@ INSERT INTO `blog_category`(`blog_id`,`category_id`) VALUES('4',
 '4');
   
   
-
 /* ================= INSERT command for blog id 5 
- * on 2022-03-28 09:05:32 am
+ * on 2022-03-11 16:40:05 pm
  * */
 INSERT INTO `blog_category`(`blog_id`,`category_id`) VALUES('5',
 '5');
+
+ 
+ 
+/* ================= INSERT command for blog id 6 
+ * on 2022-04-17 20:55:29 pm
+ * */
+INSERT INTO `blog_category`(`blog_id`,`category_id`) VALUES('6',
+'5');
   
+/* ================= INSERT command for blog id 6 
+ * on 2022-04-17 20:55:29 pm
+ * */
+INSERT INTO `blog_category`(`blog_id`,`category_id`) VALUES('6',
+'5');
  

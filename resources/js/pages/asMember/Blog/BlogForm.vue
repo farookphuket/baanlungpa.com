@@ -62,57 +62,134 @@
                 </div>
             </div>
 
+
+            <!-- user upload,url for cover START -->
+            <div class="mt-2 mb-4">
+                <div class="columns is-mobile">
+
+                    <!-- user upload START -->
+                    <div class="column">
+                        <div class="box">
+                            <p class="title">
+                                upload cover
+                            </p>
+                            <p>
+                                limit size to 2 MB.
+                            </p>
+                        </div>
+
+                        <div class="file has-name">
+                          <label class="file-label">
+                            <input class="file-input" type="file" 
+                            ref="bl_cover_upload" 
+                            @change="preveiewUploadCover"
+                            >
+                            <span class="file-cta">
+                              <span class="file-icon">
+                                  <font-awesome-icon 
+                                      icon="upload"></font-awesome-icon>
+                              </span>
+                              <span class="file-label">
+                                Choose a file…
+                              </span>
+                            </span>
+                            <span class="file-name">
+                                {{upload_file_name}}
+                            </span>
+                          </label>
+                        </div>
+
+
+                    </div>
+                    <!-- user upload END -->
+
+                    <!-- image url START -->
+                    <div class="column">
+                        <div class="field">
+                            <div class="box">
+                                <p class="title">
+                                    copy the url
+                                </p>
+                                <p>
+                                    paste the url here click 'eye' button to 
+                                    preview.
+                                </p>
+                            </div>
+
+                            <div class="field has-addons">
+
+                                <div class="control">
+                                    <input v-model="bForm.bl_cover_url" 
+                                    class="input" 
+                                    ref="bl_cover_url"
+                                    type="text" name="" 
+                                    placeholder=
+            "paste image url then hit the eye icon..." 
+                                     
+                                    >
+
+                                </div>
+
+                                <div class="control">
+                                    <a class="button is-link" href="" 
+                                        @click.prevent="showUrlImagePreview">
+                                        <font-awesome-icon 
+                                            icon="eye"></font-awesome-icon>
+
+                                    </a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- image url END -->
+                </div>
+            </div>
+            <!-- user upload,url for cover END -->
+
+
+            <!-- preveiew cover image START -->
+            <div class="mb-4" 
+                v-if="isShowPreview !== false">
+                <div class="has-text-centered">
+                    <figure class="justify-content-center">
+                        <img :src="photo_obj.img" :alt="photo_obj.alt" 
+                        style="max-width:450px;max-height:300px;">
+                    </figure>
+                    <p class="has-text-centered">
+                        {{photo_obj.alt}} 
+
+                    </p>
+                    <div class="mt-2 mb-4" v-show="file_is_too_big">
+                        <div v-html="too_big_msg"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- preveiew cover image END -->
+
+
+
             <div class="mt-2 mb-2">
                 <div class="box">
                     <p class="title">
                       excerpt
                     </p>
                     <p class="subtitle">
-                        your text is limit at 1000 letters
+                        your text is limit at 200 letters
                     </p>
                 </div>
 
                 <div class="field">
-                    <div class="control">
-                        <jodit-editor 
-                            height=450
-                            v-model="bForm.bl_excerpt" 
-                            :editorOptions="options" 
-                            ></jodit-editor>
-                    </div>
-                </div>
-                <!-- jodit-vue3 still the problem on update show none data 
-                    9-Feb-2022 -->
-                    <div class="mt-4 mb-4">
-                        <div class="field is-pulled-right">
-                            <span class="mr-2 tag is-rounded">
-                                {{bForm.bl_excerpt.length}}
-                            </span>
-                            <span class="mr-2 ml-2 tag has-text-danger 
-                            has-text-weight-bold" 
-                                v-if="bForm.bl_excerpt.length >= 1001">
-                                Your excerpt s too long!
-                            </span>
-                            <button class="button is-rounded is-primary 
-                                is-small" 
-                                @click.prevent="copyExcerptCode" 
-                                    v-if="bForm.bl_excerpt.length >= 5">
-                                <font-awesome-icon 
-                                    icon="copy"></font-awesome-icon>
-                                <span class="ml-2">copy text</span>
-                            </button>
-                        </div>
-                        <div class="field">
-                            <div class="box">
-                                <textarea class="textarea" 
-                                ref="bl_excerpt"
-                                v-model="bForm.bl_excerpt"></textarea>
-                            </div>
-                        </div>
+
+                    <div class="control has-icons-right">
+                        <textarea v-model="bForm.bl_excerpt" class="textarea" 
+                            name="" ></textarea>
+                        <span class="icon is-right 
+                            has-text-weight-bold">{{bForm.bl_excerpt.length}}</span>
                     </div>
 
-                <!-- jodit-vue3 still the problem on update show none data 
-                    9-Feb-2022 -->
+                </div>
 
             </div>
             <!-- end of excerpt text -->
@@ -292,6 +369,8 @@ export default{
             bForm:new Form({
                 bl_title:'',
                 bl_slug:'',
+                bl_cover_upload:'',
+                bl_cover_url:'',
                 bl_excerpt:'',
                 bl_body:'',
                 bl_is_public:true,
@@ -301,8 +380,22 @@ export default{
             }),
             options:{
                 askBeforePasteHTML:false,
-        //        disablePlugins:"powered-by-jodit",
+                disablePlugins:"powered-by-jodit",
             },
+            upload_obj:{
+                file:null,
+                img:'',
+                size:0,
+            },
+            photo_obj:{
+                img:'',
+                alt:''
+            },
+            upload_file_name:'no file select',
+            file_is_too_big:false,
+            too_big_msg:'',
+            isShowPreview:false,
+
         }
     },
     watch:{
@@ -322,6 +415,7 @@ export default{
                 this.bForm.category = 0
                 this.bForm.tag = []
                 this.bForm.bl_is_public = false
+                this.isShowPreview = true
                 let url = `/api/admin/blog/${x}/edit`
                 axios.get(url)
                     .then(res=>{
@@ -334,6 +428,11 @@ export default{
                         this.bForm.bl_title = rData.bl_title
                         this.bForm.bl_excerpt = rData.bl_excerpt
                         this.bForm.bl_body = rData.bl_body
+
+
+                        // image preview 
+                        this.photo_obj.img = rData.bl_cover
+                        this.photo_obj.alt = rData.bl_title
 
                         rData.category.map((ca)=>{
                             //console.log(ca)
@@ -369,6 +468,8 @@ export default{
 
             this.bForm.bl_slug = this.slugText.thaiSlug(this.bForm.bl_title)
 
+
+           /*     
             let fData = {
                 bl_title:this.bForm.bl_title,
                 bl_slug:this.bForm.bl_slug,
@@ -379,32 +480,39 @@ export default{
                 tag:this.bForm.tag,
                 new_tag:this.bForm.new_tag,
             }
-            let url = `/api/admin/blog`
-            if(id && id !== 0){
-                url = `/api/admin/blog/${id}`
-                axios.put(url,fData)
-                    .then(res=>{
-                        this.res_status = res.data.msg
+            */
 
-                        // remove the cookies after success updated
-                        if(this.$cookies.get("editId") && 
-                            this.$cookies.get("editId") !== 0){
-                            this.$cookies.remove("editId")
-                        }
-                        setTimeout(()=>{
-                            this.res_status = ''
-                            this.bForm.reset()
-                           this.$emit('getBlog') 
-                        },2500)
-                    })
-                    .catch(err=>{
-                        this.res_status = `<span class="
-                        tag is-medium has-text-weight-bold has-text-danger
-                        ">
-                    ${Object.values(err.response.data.errors).join()}
-                            </span>`
-                    })
-            }else{
+
+            let fData = new FormData()
+
+
+            fData.append("bl_cover_upload",this.bForm.bl_cover_upload)
+            fData.append("bl_cover_url",this.bForm.bl_cover_url)
+
+            fData.append("bl_title",this.bForm.bl_title)
+            fData.append("bl_slug",this.bForm.bl_slug)
+            fData.append("bl_excerpt",this.bForm.bl_excerpt)
+            fData.append("bl_body",this.bForm.bl_body)
+            fData.append("bl_is_public",this.bForm.bl_is_public)
+
+            // the tags is in array so you have to loop throught
+            // code from :https://stackoverflow.com/questions/68841019/how-to-send-array-and-formdata-with-axios-vue 
+            // 1 Apr 2022
+            this.bForm.tag.forEach((ta)=>{
+                fData.append("tag[]",ta)
+            })
+
+            fData.append("new_tag",this.bForm.new_tag)
+            fData.append("category",this.bForm.category)
+
+
+
+            let url = `/api/member/blog`
+            if(id && id !== 0){
+                url = `/api/member/blog/${id}`
+                fData.append("_method","PUT")
+
+            }
                 axios.post(url,fData)
                     .then(res=>{
                         this.res_status = res.data.msg
@@ -422,7 +530,7 @@ export default{
                             </span>`
                     })
             }
-            }
+            
 
 
         },
@@ -467,10 +575,6 @@ export default{
                 return
             }
         },
-        copyExcerptCode(){
-            this.$refs.bl_excerpt.select()
-            document.execCommand('copy')
-        },
         copyBodyCode(){
             this.$refs.bl_body.select()
             document.execCommand('copy')
@@ -479,6 +583,72 @@ export default{
             this.bForm.reset()
             this.$emit("closeAndRefresh")
         },
+        preveiewUploadCover(e){
+            // reset preview 
+            this.resetImagePreview()
+            const theFile = e.target.files[0]
+            let the_upload_size = theFile.size/1024/1024
+
+
+            // upload object
+            this.upload_obj = {
+                file:theFile,
+                img:URL.createObjectURL(theFile),
+                size:the_upload_size
+            }
+
+            // preview object 
+            this.photo_obj = {
+                img:this.upload_obj.img,
+                alt:this.upload_obj.file.name
+            }
+            
+            // upload file name 
+            this.upload_file_name = this.upload_obj.file.name
+
+
+            if(the_upload_size > 2){
+                this.too_big_msg = `<span class="has-text-weight-bold 
+                has-text-danger">Error,the upload file 
+                ${this.upload_file_name} is too big!  
+                make sure your upload file size is less than 2 MB!</span>`
+                this.file_is_too_big = true
+            }
+
+            // form value 
+            this.bForm.bl_cover_upload = theFile
+
+            // set show preview to true
+            this.isShowPreview = true
+            
+        },
+        showUrlImagePreview(){
+            this.resetImagePreview()
+            /* clear the previous value from form */
+            const theUrl = this.$refs.bl_cover_url.value
+            if(theUrl && theUrl !== ''){
+                this.upload_obj = {}
+                this.photo_obj = {
+                    img:theUrl,
+                    alt:theUrl
+                }
+                this.bForm.bl_cover_url = theUrl
+                this.upload_file_name = theUrl
+            }
+
+
+            // set show preveiew to true
+            this.isShowPreview = true
+        },
+        resetImagePreview(){
+            this.file_is_too_big = false 
+            this.too_big_msg = ''
+            this.bForm.bl_cover_upload = ''
+            this.bForm.bl_cover_url = ''
+            this.isShowPreview = false
+            this.upload_file_name = ''
+        },
+
 
     },
 }

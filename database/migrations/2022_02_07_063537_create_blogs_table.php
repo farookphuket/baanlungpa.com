@@ -21,6 +21,7 @@ class CreateBlogsTable extends Migration
 
             $table->string('bl_title');
             $table->string('bl_slug');
+            $table->string('bl_cover')->nullable();
             $table->text('bl_excerpt');
             $table->text('bl_body');
             $table->boolean('bl_is_public');

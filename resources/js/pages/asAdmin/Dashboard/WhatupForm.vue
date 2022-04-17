@@ -58,6 +58,26 @@
                         <div class="field">
                             <div v-html="res_status"></div>
                         </div>
+                        <div class="mt-2 mb-4">
+                            <div class="field is-pulled-right">
+                                <div class="control">
+                                    <label class="checkbox" for="">
+                                        <input v-model="wForm.is_public" 
+                                        type="checkbox" name="">
+                                        <span class="mr-2" 
+                                            v-if="wForm.is_public === true">
+                                            yes,show as public
+                                        </span>
+                                        <span class="mr-2 has-text-danger 
+                                            has-text-weight-bold" 
+                                            v-else>
+                                            No,keep it as private
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="column">
                         <div class="field is-pulled-right">
@@ -120,7 +140,7 @@ export default{
                 let url = `/api/admin/whatup/${id}`
                 axios.get(url)
                     .then(res=>{
-                        console.log(res.data)
+                        //console.log(res.data)
                         let rData = res.data.whatup
                         this.wForm.wp_title = rData.wp_title
                         this.wForm.wp_body = rData.wp_body
@@ -164,6 +184,7 @@ export default{
             this.res_status = ''
             this.wForm.reset()
             this.wForm.wp_body = ''
+            this.wForm.is_public = true
         },
         willCopy(){
             this.$refs.body.select()

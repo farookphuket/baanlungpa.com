@@ -6,11 +6,13 @@
         <link href="{{asset('img/house_small.png')}}" rel="icon">
 
     @hasSection('meta_title')
-        <title>
-            @yield('meta_title')
-        </title>
+        <title>@yield('meta_title') ,บ้านลุงป้า,บ้านลุงป้าดอทคอม,บ้านลุงป้าร้อยเอ็ด</title>
+        <meta name="keywords" content="@yield('meta_title'),บ้านลุงป้าจังหวัดร้อยเอ็ด">
+        <meta name="description" content="@yield('meta_title'),baanlungpa dot com ,บ้านลุงป้า ร้อยเอ็ด thailand">
     @else
-        <title>บ้านลุงป้าดอทคอม</title>
+        <title>บ้านลุงป้าดอทคอม baanlungpa dot com the greate place to visit in Roi-Et Thailand</title>
+        <meta name="keywords" content="บ้านลุงป้า ดอทคอม,จังหวัดร้อยเอ็ด,บ้านลุงป้า ,baanlungpa roi-et thailand">
+        <meta name="description" content="ยินดีเข้าสู่เว็บไซต์ บ้านลุงป้า ดอทคอม baanlungpa dot com RoiEt Province thailand">
     @endif 
 
 <?php

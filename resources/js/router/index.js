@@ -24,6 +24,8 @@ import CourseView from '../pages/asPublic/Course/CourseView.vue'
 import BlogView from "../pages/asPublic/BlogView.vue"
 import StaticPage from "../pages/asPublic/StaticPage.vue"
 import PubBlog from "../pages/asPublic/Comment/PubBlog.vue"
+import BlogByCategory from '../pages/asPublic/Comment/BlogByCategory.vue'
+
 
 // as Admin view 
 import AdminView from "../pages/_include/AdminView.vue" 
@@ -75,6 +77,11 @@ export const routes = [
                 name:"PubBlog",
                 path:'/blog-public',
                 component:PubBlog,
+            },
+            {
+                name:"BlogByCategory",
+                path:'/category/:slug',
+                component:BlogByCategory,
             },
             {
                 name:"PubCourse",

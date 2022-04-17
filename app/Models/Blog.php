@@ -21,6 +21,7 @@ class Blog extends Model
         "category_id",
         "bl_title",
         "bl_slug",
+        "bl_cover",
         "bl_excerpt",
         "bl_body",
         "bl_is_public",
@@ -75,11 +76,12 @@ class Blog extends Model
  * on ".date("Y-m-d H:i:s a")."
  *
  * */
-INSERT INTO `{$table}`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
+INSERT INTO `{$table}`(`user_id`,`bl_title`,`bl_slug`,`bl_cover`,`bl_excerpt`,
 `bl_is_public`,`bl_body`,`created_at`,`updated_at`) VALUES(
     '{$bl_data->user_id}',
     '{$bl_data->bl_title}',
     '{$bl_data->bl_slug}',
+    '{$bl_data->bl_cover}',
     '{$bl_data->bl_excerpt}',
     '{$bl_data->bl_is_public}',
     '{$bl_data->bl_body}',
@@ -102,6 +104,7 @@ case"edit":
  * */
 UPDATE `{$table}` SET bl_title='{$bl_data->bl_title}',
 bl_slug='{$bl_data->bl_slug}',
+bl_cover='{$bl_data->bl_cover}',
 bl_excerpt='{$bl_data->bl_excerpt}',
 bl_body='{$bl_data->bl_body}',
 bl_is_public='{$bl_data->bl_is_public}',

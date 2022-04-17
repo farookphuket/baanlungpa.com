@@ -3,10 +3,15 @@
         <div class="box mt-4 mb-4 pb-4"
             v-if="user_has_login === false || isHasToken === ''">
             <p class="has-text-centered">
-                to leave the comment,please (เขียนคอมเม้นต์ ต้องล๊อคอินก่อนนะจ๊ะ)
+                <span class="mr-2">
+                    to leave the comment,please  
+                </span>
+
                 <router-link 
                     :to="{name:'LoginPage'}">login (ล๊อคอิน)</router-link> 
-                .
+                <span class="ml-2">
+                    (เขียนคอมเม้นต์ ต้องล๊อคอินก่อนนะจ๊ะ)
+                </span> .
             </p>
         </div>
         <comment-form 

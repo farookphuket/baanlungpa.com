@@ -39,3 +39,156 @@ of "stateful" just to prevent from having a login problem "cannot set token"
 
 
 
+ 
+/* ========================== Backup whatup id 2 ==========================
+ * on date 2022-03-30 01:26:26 am
+ * */
+INSERT INTO `whatups`(`user_id`,`wp_title`,`wp_body`,`is_public`,`created_at`,
+`updated_at`) VALUES(
+    '1',
+    'cannot export my database from phpmyadmin',
+    '<p class="title">
+    phpmyadmin fail to export database
+</p>
+<p class="subtitle">
+    use command line "mysqldump" instead
+</p>
+<p class="mb-4">
+    I just have facing this problem today(29 Mar 2022) while I tried to update my blog on "baanlungpa.com" but the database export is fail cannot export by some reason 
+</p>
+<div>
+    <figure class="justify-content-center">
+        <img src="https://i.ibb.co/tYVPQSs/cannot-export-db-phpmyadmin.png">
+    </figure>
+    <p class="pt-2 has-text-centered">
+        phpmyadmin error export on 29 mar 2022
+    </p>
+</div>
+<p>
+    so I just google it with the keyword "arch linux cannot export .sql file" then I found the command for it my command I use is 
+</p>
+<div class="field">
+    <span class="code">
+        
+        mysqldump -u root -p mydatabasename&gt;~/filename.sql
+    </span>
+</div>
+<p>
+    so now I can use phpmyadmin to import the sql script to my website just like what i want, problem solved! 
+</p>',
+    '0',
+    '2022-03-30 01:26:26',
+    '2022-03-30 01:26:26');
+  
+/* ========================== update whatup id 2 ==========================
+ * on date 2022-03-30 02:20:40 am
+ * */
+UPDATE `whatups` SET wp_title='cannot export my database from phpmyadmin',
+wp_body='<p class="title">
+    phpmyadmin fail to export database
+</p>
+<p class="subtitle">
+    use command line "mysqldump" instead
+</p>
+<p class="mb-4">
+    I just have facing this problem today(29 Mar 2022) while I tried to update my blog on "baanlungpa.com" but the database export is fail cannot export by some reason 
+</p>
+<div>
+    <figure class="justify-content-center">
+        <img src="https://i.ibb.co/tYVPQSs/cannot-export-db-phpmyadmin.png">
+    </figure>
+    <p class="pt-2 has-text-centered">
+        phpmyadmin error export on 29 mar 2022
+    </p>
+</div>
+<p>
+    so I just google it with the keyword "arch linux cannot export .sql file" then I found the command for it my command I use is 
+</p>
+<div class="field">
+    <span class="code">
+        
+        mysqldump -u root -p mydatabasename&gt;~/filename.sql
+    </span>
+</div>
+<p>
+    so now I can use phpmyadmin to import the sql script to my website just like what i want, problem solved! 
+</p>',
+is_public='1',
+updated_at='2022-03-30 02:20:40' WHERE id='2';  
+/* ========================== Backup whatup id 3 ==========================
+ * on date 2022-03-30 10:58:42 am
+ * */
+INSERT INTO `whatups`(`user_id`,`wp_title`,`wp_body`,`is_public`,`created_at`,
+`updated_at`) VALUES(
+    '1',
+    'มาทดลองใช้งาน ms office online ฟรีๆ ดีๆ กันครับ',
+    '<div class="content">
+    <p class="title">
+        แก้ไขไฟลเอกสารบนคอมในเวปบราวเซอร์ 
+    </p>
+    <p>
+        ถ้าท่านมีคอมมากกว่า 1 เครื่องการจะทำให้ไฟล์เอกสารมันเหมือนกันในคอมอีกเครื่องแน่นอนว่ามันคงจะทำได้ยาก(มันทำได้แต่อาจจะต้องเรียนรู้กันหน่อยนึง) แต่ไหนๆ ก้ใช้โปรแกรม ms office ทำงานอยู่แล้ว มันก้คงจะไม่ยากอะไรถ้าจะลองใช้ใน ms office onilne ดูบ้าง คลิกดูวิดิโอสิ
+    </p>
+    <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/3GoWfm5Qw1w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    </div>
+    <p class="has-text-centered pt-2">
+        ใช้งานโปรแกรม ms office online
+    </p>
+    <p class="mt-2 pt-2 mb-4">
+        <span class="tag has-text-info">
+            ตัวผมเอง
+        </span>
+        ผมไม่ค่อยได้ใช้งานพวกโปรแกรมออฟฟิสนะครับ เพราะฉะนั้นความรู้ผมคือ "ความมั่ว" ล้วนๆ 100% ครับ
+    </p>
+</div>',
+    '1',
+    '2022-03-30 10:58:42',
+    '2022-03-30 10:58:42');
+  
+/* ========================== Backup whatup id 4 ==========================
+ * on date 2022-03-30 14:01:12 pm
+ * */
+INSERT INTO `whatups`(`user_id`,`wp_title`,`wp_body`,`is_public`,`created_at`,
+`updated_at`) VALUES(
+    '1',
+    'สมัครบัญชี hotmail ,live หรือ outlook กับ ไมโครซอฟท์',
+    '<div class="content">
+    <p class="title">
+        วิธีการสมัครบัญชี hotmail,live,outlook
+    </p>
+    <p>
+        สำหรับท่านใดที่ยังไม่มีบัญชี hotmail,live,outlook ของ ไมโครซอฟท์ ลองดูวิธีสมัครในวิดิโอนี้ครับ (บางครั้งปกวิดิโออาจจะไม่โชว์นะครับ ให้กดที่ตัวเล่นวิดิโอ มันก็จะเล่นได้ปรกติ)
+        
+    </p>
+    <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/8nti89eO7Lc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    </div>
+    <p class="pt-2 has-text-centered">
+        วิธีสมัครอีเมล hotmail ,outlook ตามแบบลุงฟา
+    </p>
+    <p class="pt-4 mt-2 mb-4">ไหนๆ ถ้าเราต้องใช้ ms office ทำงานอยู่แล้ว การ&nbsp;sync งานเอกสารในเครื่องของเรากับบัญชี hotmail ของเราก็น่าจะสะดวกและไม่ต้องกังวลว่าไฟลเอกสารของเราจะหาย หรือไม่ได้จัดเก็บ หรือถ้าเราต้องเปิดไฟล์ๆ นั้นจากเครื่องอื่นๆ เราก้สามารถทำได้ง่ายๆ&nbsp;</p>
+</div>',
+    '1',
+    '2022-03-30 14:01:12',
+    '2022-03-30 14:01:12');
+  
+/* ========================== Backup whatup id 5 ==========================
+ * on date 2022-04-17 20:34:42 pm
+ * */
+INSERT INTO `whatups`(`user_id`,`wp_title`,`wp_body`,`is_public`,`created_at`,
+`updated_at`) VALUES(
+    '1',
+    'มาละลุร้อนละลาย 14-04-2565',
+    '<p>
+    วันสงกรานต์อย่าไปไหนกันไกลๆ รถมันเยอะ แย่งกินแย่งกันเที่ยวมันน่าสนุกตรงไหน ไปแต่เรากันดีกว่า มาละลุจะได้ร้อนกันละลาย สะใจวันสงกรานต์
+</p>
+<div class="video-container">
+    <iframe id="odysee-iframe" width="560" height="315" src="https://odysee.com/$/embed/la-lu-14-apr-2022/be91961bc667e9d94289319fcbd4be6b587cd948?r=2YnWiNbGCXfEhJyem4TFEz8FTkHv5dEg" allowfullscreen=""></iframe>
+</div>
+<p class="has-text-centered pt-2">
+    มาเที่ยวละลุกับป้า วันที่ 14-04-2565 เที่ยวละลุ ร้อนละลาย ให้ได้ประสบการณ์สิ</p>',
+    '1',
+    '2022-04-17 20:34:42',
+    '2022-04-17 20:34:42');
+ 

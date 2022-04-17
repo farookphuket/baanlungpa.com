@@ -50,6 +50,12 @@
 > the login and register page 
 
 
+### Blog List 2 Apr 2022
+> show list of blog post has been change.
+
+[blog_list]:https://i.ibb.co/wJGFNbd/blog-list-2-apr-2022.png
+
+![show blog list][blog_list]
 
 
 
@@ -93,6 +99,17 @@
 
 ```
 
+
+
+
+---
+
+## date 17 Apr 2022 
+
+> just update the meta which is not much help as it is use only javascript to 
+> render so this is real real bad SEO but I still cannot use any framework 
+> like "nextjs" or "nuxtjs" which is well support for the seo as I have to use 
+> share hosting still.
 
 
 ---

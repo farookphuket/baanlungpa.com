@@ -4,8 +4,8 @@
             <p class="title has-text-centered">There is no comment yet!</p>
             <p class="subtitle" v-if="hasToken !== null || 
                 user_has_login !== false">
-                do you want the first comment? create one now.</p>
-            <p>{{hasToken}}</p>
+                do you want the first comment? create one now.
+            </p>
         </div>
         <article 
             class="pb-2 box content" 

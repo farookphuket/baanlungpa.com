@@ -1,8 +1,6 @@
 <template>
     <section class="body_content">
         <div class="container">
-            <p class="title">the blog comment</p>
-
             <comment-list 
                 :comments="comments" 
                 :comment_count="comment_count"

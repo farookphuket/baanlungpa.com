@@ -67,6 +67,12 @@
                 <!-- show slug end -->
 
                 <div class="mt-2 mb-4 pb-4">
+                    <div class="has-text-centered">
+                        <figure class="justify-content-center">
+                            <img :src="blog.bl_cover" :alt="blog.bl_title">
+                        </figure>
+                        <p class="pt-2">{{blog.bl_title}}</p>
+                    </div>
                     <div v-html="blog.bl_excerpt"></div>
                 </div>
                 <div class="mt-2 mb-4 pb-4">

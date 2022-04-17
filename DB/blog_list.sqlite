@@ -10,48 +10,14 @@
  * on 2007-10-29 12:21:25 pm
  *
  * */
-INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
+INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_cover`,`bl_excerpt`,
 `bl_is_public`,`bl_body`,`created_at`,`updated_at`) VALUES(
     '1',
     'my new post my default post',
     'my-new-post-default-post',
+    'https://i.ibb.co/CBD2wgH/baanlungpa-17-feb-2022.png',
     '
-    <div class="columns">
-        <div class="column">
-            <figure class="justify-content-center">
-                <img 
-                src="https://i.ibb.co/CBD2wgH/baanlungpa-17-feb-2022.png" 
-                alt="my default data picture">
-            </figure>
-        </div>
-        <div class="column">
-            <div class="content">
-                <p class="title">
-                    please do edit me from the file "post_list.sqlite"
-                </p>
-                <p>
-                    this is the default post that will be come when you run the command 
-
-                </p>
-
-                <pre>
-                    <code>
-                        <span>
-                            php artisan db:seed
-                        </span>
-                    </code>
-                </pre>
-                <p>
-                    please do edit me if you want it to be your content but do 
-                    not delete me out from the file "post_list.sqlite" because 
-                    it will throw Error when you run "php artisan db:seed" 
-                    command.
-                </p>
-            </div>
-        </div>
-    </div>
-
-
+    this is the default post DO NOT DELETE ME
     ',
     '1',
     '
@@ -108,28 +74,14 @@ INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
  * on 2022-02-25 21:10:34 pm
  *
  * */
-INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
+INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_cover` ,`bl_excerpt`,
 `bl_is_public`,`bl_body`,`created_at`,`updated_at`) VALUES(
     '4',
     'วิชาประกันภัยในอุตสาหากรรมขนส่งและโลจิสติกส์',
     'วิชาประกันภัยในอุตสาหากรรมขนส่งและโลจิสติกส์',
+    'https://www.prachachat.net/wp-content/uploads/2021/09/5-4-728x409.jpg',
     '
-<div class="columns is-mobile">
-<div class="column">
-<figure class="justify-contenr-center">
-<img src="https://www.prachachat.net/wp-content/uploads/2021/09/5-4-728x409.jpg">
-</figure>
-<p class="pt-2 has-text-centered">
 สื่อการสอนวิชาการประกันภัยอุตสาหกรรมการขนส่งและโลจิสติกส์
-</p>
-</div>
-<div class="column">
-<p class="title">
-เรียนออนไลน์กับครูมดแดง
-</p>
-<p>สอนวิชาการประกันภัยอุตสาหกรรมการขนส่งและโลจิสติกส์</p>
-</div>
-</div>
 
     ',
     '1',
@@ -153,28 +105,16 @@ INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
  * on 2022-03-04 08:10:47 am
  *
  * */
-INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
+INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_cover`,`bl_excerpt`,
 `bl_is_public`,`bl_body`,`created_at`,`updated_at`) VALUES(
     '4',
     'เที่ยวสระแก้วกับป้าวันที่ 26 กุมภาฯ 2565',
     'เที่ยวสระแก้วกับป้าวันที่-26-กุมภาฯ-2565',
-    '<div class="columns is-mobile">
-    <div class="column">
-        <figure class="justify-content-center">
-            <img src="https://i.ibb.co/mhFDLVF/sakaew-25-feb-2022.png">
-        </figure>
-        <p class="has-text-centered pt-2">
-            สระแก้วกับป้า
-        </p>
-    </div>
-    <div class="column">
-        <p class="title has-text-success">
-            ไปเที่ยวสระแก้วกับป้า
-        </p>
-        <p>
-             วันที่ 26 กุมภาฯ 2565</p>
-    </div>
-</div>',
+    'https://i.ibb.co/mhFDLVF/sakaew-25-feb-2022.png',
+    '
+    ไปเที่ยวสระแก้วกับป้า วันที่ 26 กุมภาฯ 2565
+
+    ',
     '1',
     '<div class="pt-4 mt-4 mb-4">
     <p class="mb-4">
@@ -201,36 +141,15 @@ INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
  * on 2022-03-11 16:40:05 pm
  *
  * */
-INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
+INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_cover`,`bl_excerpt`,
 `bl_is_public`,`bl_body`,`created_at`,`updated_at`) VALUES(
     '1',
     'เรียนขายของออนไลน์ รุ่น 208 วันที่ 10 มี.ค. 2565',
     'เรียนขายของออนไลน์-รุ่น-208-วันที่-10-มีค-2565',
-    '<div class="columns is-mobile">
-    <div class="column">
-        <figure class="justify-content-center">
-            <img src="https://i.ibb.co/ckf8Y4y/course98bath-cover-1.jpg">
-        </figure>
-        <p class="pt-2 has-text-centered">
-            เรียนออนไลน์รุ่นที่ 208
-        </p>
-    </div>
-    <div class="column">
-        <div>
-
-
-            <p class="title">
-                เก็บไว้เป็นที่ระลึก และเผื่อใครอยากจะศึกษาคอร์สเรียนดีๆ แบบนี้
-
-            </p>
-            <p>
-                เรียนขายของออนไลน์ รุ่นที่ 208 ที่คุณภาพคับแก้ว แห่งปี 2022(10-12 พ.ศ. 2565)
-                เผื่อมีเพื่อนๆ นักเรียนคอร์สนี้ท่านใดอยากฟังอาจารย์สอนอีกครั้งเพราะว่าฟังไม่ทันในครั้งแรก
-            </p>
-
-        </div>
-    </div>
-</div>',
+    'https://i.ibb.co/ckf8Y4y/course98bath-cover-1.jpg',
+    '
+        เรียนออนไลน์รุ่นที่ 208 เก็บไว้เป็นที่ระลึก และเพื่อเตือนตัวเองว่า มึงจะไม่ได้รวยหรอก
+    ',
     '1',
     '
 <div class="content">
@@ -240,14 +159,19 @@ INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
             เก็บไว้เป็นที่ระลึก
         </p>
         <p>
-            หรือหากท่านใดอยากแนะนำให้เพื่อนๆ ดูก็ยินดีนะครับ เรียนคอร์สนี้ได้อะไรดีๆ มากกว่าที่คุณคิด
+            หรือหากท่านใดอยากแนะนำให้เพื่อนๆ ดูก็ยินดีนะครับ เรียนคอร์สนี้ได้อะไรดีๆ 
+            มากกว่าที่คุณคิด&nbsp;
+            <span class="has-text-weight-bold has-text-danger">
+                หมายถึงคิดให้ดีๆ นะ เพราะว่ามึงจะไม่รวยหรอก
+            </span>
+            
         </p>
     </div>
 
     <div class="video-container">
         <iframe src="https://archive.org/embed/thai-course-online-98-thaibath-208-10-mar-2022" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""></iframe>
     </div>
-<div class="mt-2 pb-2">
+<div class="mt-2 pb-2 pt-2">
 <div class="video-container">
 <iframe src="https://archive.org/embed/thai-course-class-208-98thaibath-day2" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
 </div>
@@ -256,16 +180,6 @@ INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
 </p>
 </div>
 
-<!-- day 2 START -->
-<div class="mt-2 pb-2">
-<div class="video-container">
-<iframe src="https://archive.org/embed/thai-course-class-208-98thaibath-day2" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
-</div>
-<p class="has-text-centered pt-2">
-เรียนขายของออนไลน์วันที่ 2 รุ่น 208 (เสียงมันค่อยมากๆ ต้องขออภัย)
-</p>
-</div>
-<!-- day 2 END -->
 <!-- day 3 START -->
 <div class="mt-2 pb-2">
 <div class="video-container">
@@ -323,27 +237,15 @@ INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
  * on 2022-03-28 09:05:32 am
  *
  * */
-INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
+INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_cover`,`bl_excerpt`,
 `bl_is_public`,`bl_body`,`created_at`,`updated_at`) VALUES(
     '4',
     'koko var at koh samed on 26-27 mar 2022',
     'koko-var-at-koh-samed-on-26-27-mar-2022',
-    '<div class="columns is-mobile">
-    <div class="column">
-        <figure class="justify-content-center">
-            <img src="https://i.ibb.co/0JVXtzk/IMG-20220327-112034.jpg">
-        </figure>
-        <p class="pt-2 has-text-centered">
-            โกโก้ว่า ชุด เปิดซิง
-        </p>
-    </div>
-    <div class="column">
-        <p class="title">
-            ที่ระลึกจากวันวาน และ โกโก้วา</p>
-        <p class="mb-4">
-            ไปเที่ยวกันมั้ย จะไปเกาะสเม็ดต่อให้ไปแล้วยังไม่เสร็จ แต่รับรองว่าเด็ดไม่หยอกเลยไง</p>
-    </div>
-</div>',
+    'https://i.ibb.co/0JVXtzk/IMG-20220327-112034.jpg',
+    '
+    ไปเที่ยวกันมั้ย จะไปเกาะสเม็ดต่อให้ไปแล้วยังไม่เสร็จ แต่รับรองว่าเด็ดไม่หยอกเลยไง
+    ',
     '1',
     '<div class="content mt-4">
     <p class="title">
@@ -375,4 +277,40 @@ INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_excerpt`,
 </div>',
     '2022-03-28 09:05:32',
     '2022-03-28 09:05:32');
+ 
+ 
+ 
+ 
+/* ======================= insert Blog id 6 ========================
+ * on 2022-04-17 20:55:29 pm
+ *
+ * */
+INSERT INTO `blogs`(`user_id`,`bl_title`,`bl_slug`,`bl_cover`,`bl_excerpt`,
+`bl_is_public`,`bl_body`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'เที่ยวสระแก้วกับป้า (ละลุ ร้อนตับแล่บ) 14-04-2565',
+    'เที่ยวสระแก้วกับป้า-ละลุ-ร้อนตับแล่บ-14-04-2565',
+    'https://lh3.googleusercontent.com/EkZQcyUIuc0dyGYxPj4X3l34H8MP1SB3_aTglYvHmD7yIgmosE1qhbzEtoMId5RhWK_ZLUEbNPrygfJG9JGCn8OX-KP-WJzdkkI9Pwstz-WTP350FAlU7v5Gat7K_ZO2OZCMTb6KFnI=w2400',
+    'มาเที่ยวละลุวันวันสงกรานต์ ร้อนได้ใจ ได้ประสบการณ์ แต่อย่างน้อยก็ไม่ต้องหัวเสียกับรถติดๆ น่าเบื่อ',
+    '1',
+    '<div>
+    <p>
+        มาเที่ยวสระแก้วกับป้า ในวันสงกรานต์ เมษายยน2565 
+    </p> 
+    <div>
+        <a href="https://photos.google.com/share/AF1QipPAbxkRzxZbuFaxs0-Q6YBfOp_eCdxUJEOCXtkktZCLhef4SxNX3pCC69me0ebEYw" targe="_blank">
+            <img src="https://lh3.googleusercontent.com/EkZQcyUIuc0dyGYxPj4X3l34H8MP1SB3_aTglYvHmD7yIgmosE1qhbzEtoMId5RhWK_ZLUEbNPrygfJG9JGCn8OX-KP-WJzdkkI9Pwstz-WTP350FAlU7v5Gat7K_ZO2OZCMTb6KFnI=w2400" alt="เที่ยวละลุ ร้อนประทุปรอท">
+        </a>
+    </div>
+    
+    <div class="video-container">
+        <iframe id="odysee-iframe" width="560" height="315" src="https://odysee.com/$/embed/la-lu-14-apr-2022/be91961bc667e9d94289319fcbd4be6b587cd948?r=2YnWiNbGCXfEhJyem4TFEz8FTkHv5dEg" allowfullscreen=""></iframe>
+    </div>
+    
+    <p class="has-text-centered pt-2">
+    มาเที่ยวละลุกับป้า วันที่ 14-04-2565 เที่ยวละลุ ร้อนละลาย
+</p>
+</div>',
+    '2022-04-17 20:55:29',
+    '2022-04-17 20:55:29');
  
