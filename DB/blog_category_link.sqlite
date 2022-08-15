@@ -56,9 +56,4 @@ INSERT INTO `blog_category`(`blog_id`,`category_id`) VALUES('5',
 INSERT INTO `blog_category`(`blog_id`,`category_id`) VALUES('6',
 '5');
   
-/* ================= INSERT command for blog id 6 
- * on 2022-04-17 20:55:29 pm
- * */
-INSERT INTO `blog_category`(`blog_id`,`category_id`) VALUES('6',
-'5');
  

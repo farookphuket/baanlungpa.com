@@ -1,42 +1,49 @@
 <template>
     <div>
-                <h1 class="title has-text-centered">
+                <p class="title has-text-centered has-text-info">
                     currently working on
-                </h1>
+                </p>
                 <p class="subtitle">
-                    baanlungpa.com project which using 
+                    baanlungpa.com project which using  
+
                 </p>
                 <div class="content">
                     <p class="mb-4">
                         I using all this free code to create my web app and 
                         I will share this to you if you want to.
                     </p>
-                    <ol class="is-lower-roman">
+                    <ol class="is-lower-roman is-mobile">
                         <li>
-                            <span class="tag is-medium is-success">
-                                Laravel 8 as core code
+                            <span class="has-text-info has-text-weight-bold
+                                ">
+                                Laravel 8 as core code (this is the last 
+                                project using Laravel8+vue3)
                             </span>
                         </li>
 
                         <li>
-                            <span class="tag is-medium is-success">
+                            <span class="has-text-info has-text-weight-bold
+                                ">
                                 agent from https://github.com/jenssegers/agent
                             </span>
                         </li>
 
                         <li>
-                            <span class="tag is-medium is-success">
+                            <span class="has-text-info has-text-weight-bold
+                                ">
                                 BulmaCss for the styling.
                             </span>
                         </li>
                         <li>
-                            <span class="tag is-medium is-success">
+                            <span class="has-text-info has-text-weight-bold
+                                ">
                                 Vue 3 and Vue-router as front-end
                             </span>
                         </li>
 
                         <li>
-                            <span class="tag is-medium is-success">
+                            <span class="has-text-info has-text-weight-bold
+                            ">
                                 font awesome for some cool font 
                             </span>
                             <span class="ml-3">
@@ -47,28 +54,38 @@
                             </span>
                         </li>
                         <li>
-                            <span class="tag is-medium is-success">
+                            <span class="has-text-info has-text-weight-bold
+                                ">
                                 momentJs to format date (ago time)
                             </span>
                         </li>
                         <li>
-                            <span class="tag is-medium is-success">
+                            <span class="has-text-info has-text-weight-bold
+                                ">
                                 Vue3-cookies for the cookie 
                             </span>
                         </li>
-                        <li>
-                            <span class="tag is-medium is-warning">
+                        <li class="has-background-warning p-2 is-rounded">
+                            <span class="has-text-info has-text-weight-bold
+                                ">
                                 Jodit-vue3 for WYSIWYG html editor 
                             </span>
                         </li>
                     </ol>
                 </div>
-                <p>
-                    this web has created on 21 Jan 2003 or 
-                    {{moment("2003-01-21 23:45:50")
+                <p class="pb-4 mt-2">
+                    this web has created on 21 Jun 2021 or 
+                    {{moment("2021-06-21 23:45:50")
                     .format("YYYY-MMMM-DD H:m:s a")}} or
-                    {{moment("2003-01-21 23:45:50").fromNow()}}
+                    {{moment("2021-06-21 23:45:50").fromNow()}}
                 </p>
+                <div class="mb-4 mt-2">
+
+                    <span class="ml-2 mr-2 has-text-info 
+                        has-text-weight-bold">
+                        last update 20 Apr 2022
+                    </span>
+                </div>
     </div>
 </template>
 <script>

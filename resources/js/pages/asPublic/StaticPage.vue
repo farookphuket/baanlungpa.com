@@ -1,7 +1,7 @@
 <template>
     <section class="body_content">
         <div class="container">
-            <div class="box" v-if="useDefault === true">
+            <div  v-if="useDefault === true">
                 <about></about>
             </div>
             <article class="box" 
@@ -49,7 +49,8 @@ export default{
                     this.useDefault = false
                 })
                 .catch(err=>{
-                    //console.log(err.response.status)
+//                    console.log(err.response.status)
+                    document.title = 'about our company and our mission'
                     if(err.response.status === 404){
                         // load page not found 
                        //location.href='/page-not-found' 

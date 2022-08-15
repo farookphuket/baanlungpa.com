@@ -23,7 +23,7 @@ class VisitorController extends Controller
 
         $year = $this->visitedYear();
         $month = $this->visitedMonth();
-        $today = Visitor::whereDate("visited_at","=",date("Y-m-d"))
+        $today = Visitor::whereDate("created_at","=",date("Y-m-d"))
                         ->get();
         
         return response()->json([
@@ -45,7 +45,8 @@ class VisitorController extends Controller
     }
 
     public function visitedMonth(){
-        $visit = Visitor::whereYear("created_at","=",date("Y-m"))
+        $visit = Visitor::whereYear("created_at","=",date("Y"))
+                        ->whereMonth("created_at","=",date("m"))
                         ->get();
         return count($visit);
     }
@@ -73,8 +74,7 @@ class VisitorController extends Controller
             "os" => getUserOs(),
             "ip" => getUserIp(),
             "browser" => getUserBrowser(),
-            "device" => getUserDevice(),
-            "visited_at" => now()
+            "device" => getUserDevice()
         ]; 
 
 
@@ -92,7 +92,7 @@ class VisitorController extends Controller
         $visit_date = date('Y-m-d',time());
 
         $visit_obj = Visitor::where('ip',$ip)
-                            ->whereDate('visited_at','=',$visit_date)
+                            ->whereDate('created_at','=',$visit_date)
                             ->get();
         if(count($visit_obj) == 0):
             $this->store();

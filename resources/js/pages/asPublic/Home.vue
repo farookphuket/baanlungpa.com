@@ -30,31 +30,35 @@
                 <p class="title has-text-centered">
                     {{wp.wp_title}}
                 </p>
-                <div class="mb-4">
-                    <nav class="level is-mobile mb-4 mt-4">
-                        <div class="level-item">
-                            <span class="ml-2 pr-2">
-                                <font-awesome-icon icon="user">
-                                </font-awesome-icon>
-                            </span>
-                            <span>
-                                {{wp.user.name}}
-                            </span>
-                        </div>
+                <div class="mb-4 pb-2">
+                    <div class="columns is-mobile">
+                        <div class="column pb-2">
+                            <div class="field is-pulled-right">
 
-                        <div class="level-item">
-                            <span class="ml-2 pr-2">
-                                <font-awesome-icon icon="calendar-week">
-                                </font-awesome-icon>
-                            </span>
-                            <span class="pr-2">
-                                {{moment(wp.created_at).format("DD-MM-YY H:m:s")}}
-                            </span>
-                            <span>
-                                {{moment(wp.created_at).fromNow()}}
-                            </span>
+                                <span class="ml-2 pr-2">
+                                    <font-awesome-icon icon="user">
+                                    </font-awesome-icon>
+                                </span>
+                                <span class="mr-4">
+                                    {{wp.user.name}}
+                                </span>
+
+                                <span class="ml-2 pr-2">
+                                    <font-awesome-icon icon="calendar-week">
+                                    </font-awesome-icon>
+                                </span>
+                                <span class="pr-2">
+                                    {{moment(wp.created_at).format("DD-MM-YY H:m:s")}}
+                                </span>
+                                <span>
+                                    {{moment(wp.created_at).fromNow()}}
+                                </span>
+
+
+                            </div>
                         </div>
-                    </nav>
+                    </div>
+
                 </div><!-- end of div.no class -->
 
                 <div v-html="wp.wp_body"></div>

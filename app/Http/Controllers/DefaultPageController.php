@@ -28,6 +28,10 @@ class DefaultPageController extends Controller
 
         $about = DefaultPage::where("d_slug","about-our-website")->first();
 
+        if(!$about):
+            $about = 'USE_DEFAULT_DATA';
+        endif;
+
         return response()->json([
             "about" => $about
         ]);

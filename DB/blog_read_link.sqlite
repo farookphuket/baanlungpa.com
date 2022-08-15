@@ -113,52 +113,33 @@ INSERT INTO `blog_read`(`blog_id`,`read_id`,`ip`,`readed_at`)VALUES(
 '2022-03-29 18:10:19');
   
   
-  
-  
+   
+/* ============ last backup 15 aug 2022 to blp.proj START ====*/  
  
  
-/* ================ created link the read id '13' =============
- * to blog_id '4' on 2022-04-02 02:26:26 am
+  
+/* ================ created link the read id '18' =============
+ * to blog_id '2' on 2022-06-03 08:21:24 am
  * */
 INSERT INTO `blog_read`(`blog_id`,`read_id`,`ip`,`readed_at`)VALUES(
-'4',
+'2',
 '13',
-'127.0.0.1',
-'2022-04-02 02:26:26');
+'49.237.12.13',
+'2022-06-03 08:21:24');
   
-/* ================ created link the read id '14' =============
- * to blog_id '5' on 2022-04-02 18:09:23 pm
+/* ================ created link the read id '19' =============
+ * to blog_id '2' on 2022-06-06 06:28:22 am
  * */
 INSERT INTO `blog_read`(`blog_id`,`read_id`,`ip`,`readed_at`)VALUES(
-'5',
+'2',
 '14',
-'127.0.0.1',
-'2022-04-02 18:09:23');
-  
-/* ================ created link the read id '15' =============
- * to blog_id '6' on 2022-04-17 20:56:37 pm
- * */
-INSERT INTO `blog_read`(`blog_id`,`read_id`,`ip`,`readed_at`)VALUES(
-'6',
-'15',
-'127.0.0.1',
-'2022-04-17 20:56:37');
-  
-/* ================ created link the read id '16' =============
- * to blog_id '6' on 2022-04-17 21:09:45 pm
- * */
-INSERT INTO `blog_read`(`blog_id`,`read_id`,`ip`,`readed_at`)VALUES(
-'6',
-'16',
-'127.0.0.1',
-'2022-04-17 21:09:45');
-  
-/* ================ created link the read id '17' =============
- * to blog_id '6' on 2022-04-17 21:14:52 pm
- * */
-INSERT INTO `blog_read`(`blog_id`,`read_id`,`ip`,`readed_at`)VALUES(
-'6',
-'17',
-'127.0.0.1',
-'2022-04-17 21:14:52');
+'223.24.164.254',
+'2022-06-06 06:28:22');
+ 
+
+
+ /* ============ last backup 15 aug 2022 to blp.proj END ====*/  
+ 
+ 
+ 
  

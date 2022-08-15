@@ -37,13 +37,12 @@ class Visitor extends Model
 /* ========================== Backup visitor id $id ==========================
  * on date ".date("Y-m-d H:i:s a")."
  * */
-INSERT INTO `{$table}`(`ip`,`os`,`browser`,`device`,`visited_at`,`created_at`,
+INSERT INTO `{$table}`(`ip`,`os`,`browser`,`device`,`created_at`,
 `updated_at`) VALUES(
     '{$visitor->ip}',
     '{$visitor->os}',
     '{$visitor->browser}',
     '{$visitor->device}',
-    '{$visitor->visited_at}',
     '{$visitor->created_at}',
     '{$visitor->updated_at}');
 ";
