@@ -89,7 +89,7 @@ class VisitorController extends Controller
 
     public function isNewVisitor(){
         $ip = getUserIp();
-        $visit_date = date('Y-m-d',time());
+        $visit_date = date('Y-m-d');
 
         $visit_obj = Visitor::where('ip',$ip)
                             ->whereDate('created_at','=',$visit_date)

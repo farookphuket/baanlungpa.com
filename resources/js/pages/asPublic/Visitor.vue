@@ -96,7 +96,7 @@ export default{
             axios.get(url)
                 .then(res=>{
                     this.visitor_data = res.data.visitor_all
-//                    console.log(res.data)
+                    //console.log(res.data)
                     if(this.visitor_data != 0){
                         this.visit_all = res.data.visitor_all
                         this.visited_today = res.data.visited_day

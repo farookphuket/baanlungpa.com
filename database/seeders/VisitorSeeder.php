@@ -19,7 +19,8 @@ class VisitorSeeder extends Seeder
         //
         Eloquent::unguard();
         $path = 'DB/visitor_list.sqlite';
+        //$path = 'DB/blp_visitor_part1.sqlite';
         DB::unprepared(file_get_contents($path));
-        $this->command->info("Visitor has been Created!!");
+        $this->command->info("Visitor file 1 has been Created!!");
     }
 }

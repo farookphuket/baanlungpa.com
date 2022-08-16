@@ -18,8 +18,7 @@ class CreateVisitorsTable extends Migration
             $table->string('ip');
             $table->string('os');
             $table->string('browser');
-            $table->string('device')->default('unknow bot');
-            $table->datetime('visited_at');
+            $table->string('device')->nullable()->default('unknow bot');
             $table->timestamps();
         });
     }

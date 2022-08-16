@@ -13,7 +13,7 @@ class Visitor extends Model
     protected static $visitor_table = "visitors";
 
     protected $fillable = [
-        'os','ip','browser','visited_at','device'
+        'os','ip','browser','device'
     ];
 
 
